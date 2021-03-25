@@ -24,9 +24,6 @@ namespace SwissTransportGui
         public MainWindow()
         {
             InitializeComponent();
-
-            ITransport t = new Transport();
-            t.
         }
     }
 }

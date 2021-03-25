@@ -5,8 +5,40 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SwissTransportGui"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Nicola's App to Swiss Transport" Height="636.022" Width="1096.954" Icon="logo_transparent.png" MinWidth="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*" MinHeight="150" MaxHeight="400"/>
+            <RowDefinition Height="7*"/>
+        </Grid.RowDefinitions>
+        <Grid x:Name="dateConnectionTime" Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="10*" MinHeight="100" MaxHeight="200"/>
+                <RowDefinition Height="8*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="12*" MinWidth="200" MaxWidth="400"/>
+                <ColumnDefinition Width="12*" MinWidth="200" MaxWidth="400"/>
+                <ColumnDefinition Width="10*" MinWidth="200" MaxWidth="400"/>
+                <ColumnDefinition Width="10*" MinWidth="200"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Grid.Row="0" Grid.Column="0" x:Name="textBoxStartStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="von" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <Label Grid.Row="0" Grid.Column="0" x:Name="labelStartStation" Content="Startstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="textBoxEndStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="nach" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <Label Grid.Row="0" Grid.Column="1" x:Name="labelEndStation" Content="Zielstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <TextBox Grid.Row="0" Grid.Column="2" x:Name="textBoxAbfahrtszeit" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="nach" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <Label Grid.Row="0" Grid.Column="2" x:Name="labelAbfahrtszeit" Content="Zielstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <DatePicker Grid.Row="0" Grid.Column="2" Margin="20,70,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <TabControl Grid.Column="3" HorizontalAlignment="Left" Height="100" Margin="105,35,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="100">
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+                <TabItem Header="TabItem">
+                    <Grid Background="#FFE5E5E5"/>
+                </TabItem>
+            </TabControl>
+
+        </Grid>
+
     </Grid>
 </Window>
