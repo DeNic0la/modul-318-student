@@ -117,25 +117,7 @@ anderen Personen diese Informationen mitzuteilen.
 
 Diese User-Story hat die Priorität 1
 
-## Verbindungen Ausdrucken
 
-ID: 6
-
-Als [Benutzer](user-story.md#benutzer) möchte ich 
-
-In der [Detailansicht](user-story.md#verbindung-details-anzeigen) eine möglichkeit diese Verbindungen Auszudrucken , um
-
-die Verbindung auf Papier zu haben.
-
-### AK
-
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | In der [Detailansicht](user-story.md#verbindung-details-anzeigen) kann die Verbindung ausgedruckt werden |
-
-### Priorität
-
-Diese User-Story hat die Priorität 1
 
 ## Auto-Completion
 
