@@ -179,6 +179,27 @@ den Standort der Station nachzuvollziehen.
 
 Diese User-Story hat die Priorität 1
 
+## Stationen in der Nähe
+
+ID: 8
+
+Als [Benutzer](user-story.md#benutzer) möchte ich 
+
+Station in meiner Nähe anzeigen um
+
+meine reise besser zu planen.
+
+### AK
+
+| AK | Beschreibung |
+| :--- | :--- |
+| AK-1 | Stationen in der Nähe werden angezeigt. |
+| AK-2 | Stationen in der Nähe können auf einer Karte Angezeigt werden |
+
+### Priorität
+
+Diese User-Story hat die Priorität 3
+
 ## Favorit-Station
 
 ID: 8
