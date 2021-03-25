@@ -16,19 +16,15 @@ ID: 1
 
 Als [Benutzer](user-story.md#benutzer) möchte ich 
 
-mindestens die nächsten Vier Verbindungen zwischen Start und Zielstation angezeigt sehen, um
+eine Station eingeben und nach dieser suchen, um
 
-die Verbindungen zu sehen.
+Stationen zu sehen und diese dann für die Suche von Verbindungen zu verwenden.
 
 ### AK
 
 | AK | Beschreibung |
 | :--- | :--- |
 | AK-1 | Durch die eingabe kann eine Station eingegeben werden und nach dieser Station gesucht werden. |
-
-### Priorität
-
-Diese User-Story hat die Priorität 1
 
 ## Verbindung suchen
 
@@ -69,10 +65,6 @@ die Verbindungen zu sehen.
 | AK-1 | Der Benutzer kann eine Station durch die Eingabe in ein Textfenster festlegen. |
 | AK-2 | Der Benutzer kann durch das betätigen eines "Search-Buttons" eine Anzeige aufrufen welche die Abfahrtsverbindungen anzeigt welche von dieser Station weg gehen. |
 
-### Priorität
-
-Diese User-Story hat die Priorität 1
-
 ## Geplante Abfahrt
 
 ID: 12
@@ -91,37 +83,13 @@ Verbindungen aus der Zukunft anzuzeigen.
 | AK-2 | Standartgemäss wird die Uhrzeit und Tag eingabe auf den Aktuellen Zeitpunkt gesetzt. |
 | AK-3 | Die Uhrzeit und der Tag wird für das [suchen der Verbindungen](user-story.md#verbindung-suchen) verwendet, es werden verbindungen zu dieser Uhrzeit angezeigt. |
 
-### Priorität
-
-Diese User-Story hat die Priorität 1
-
-## Verbindung-Details anzeigen
-
-ID: 4
-
-Als [Benutzer](user-story.md#benutzer) möchte ich 
-
-Eine [angezeigte Verbindung](user-story.md#verbindung-suchen) anklicken können  , um
-
-Details über diese Verbindung zu sehen.
-
-### AK
-
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Eine Verbindung kann angeklickt werden und es werden Detailiertere Informationen zu dieser Verbindung angezeigt |
-
-### Priorität
-
-Diese User-Story hat die Priorität 1
-
 ## Abfahrtsinformationen per Mail teilen
 
 ID: 5
 
 Als [Benutzer](user-story.md#benutzer) möchte ich 
 
-In der [Detailansicht](user-story.md#verbindung-details-anzeigen) eine möglichkeit diese Verbindungen Per E-Mail zu teilen , um
+In der [Verbindungsansicht ](user-story.md#verbindung-suchen)eine möglichkeit diese Verbindungen Per E-Mail zu teilen , um
 
 anderen Personen diese Informationen mitzuteilen.
 
@@ -130,12 +98,6 @@ anderen Personen diese Informationen mitzuteilen.
 | AK | Beschreibung |
 | :--- | :--- |
 | AK-1 | Beim Klicken auf einen Knopf in der Detail ansicht wird ein Mail-Fenster geöffnet welches die Informationen der Verbindung beeinhaltet. |
-
-### Priorität
-
-Diese User-Story hat die Priorität 1
-
-
 
 ## Auto-Completion
 
@@ -152,10 +114,6 @@ schneller Verbindungen zu suchen.
 | AK | Beschreibung |
 | :--- | :--- |
 | AK-1 | die Benutzer-Texteingaben haben eine Autocompletion durch die Möglichen Stationsnahmen. |
-
-### Priorität
-
-Diese User-Story hat die Priorität 1
 
 ## Karte
 
@@ -175,10 +133,6 @@ den Standort der Station nachzuvollziehen.
 | AK-2 | Die Umliegenden Stationen werden auf der Karte mitangezeigt |
 | AK-3 | Auf der Karte kann der Aktuelle standort angezeigt werden ohne ausgewählte Station |
 
-### Priorität
-
-Diese User-Story hat die Priorität 1
-
 ## Stationen in der Nähe
 
 ID: 8
@@ -195,10 +149,6 @@ meine reise besser zu planen.
 | :--- | :--- |
 | AK-1 | Stationen in der Nähe werden angezeigt. |
 | AK-2 | Stationen in der Nähe können auf einer Karte Angezeigt werden |
-
-### Priorität
-
-Diese User-Story hat die Priorität 3
 
 ## Favorit-Station
 
@@ -218,17 +168,13 @@ diese Station bei der Suche mit höherer Priorität zu finden.
 | AK-2 | Favorit-Stationen werden in der [Autocompletion ](user-story.md#auto-completion)mit höherer priorität angezeigt. |
 | AK-3 | Favorit-Stationen können bereits vor der eingabe von Text ausgewählt werden |
 
-### Priorität
-
-Diese User-Story hat die Priorität 3
-
 ## Prioritätenliste
 
 ### Prio 1
 
 * [Verbindungen suchen](user-story.md#verbindung-suchen)
 * [Abfahrtstafel](user-story.md#abfahrtstafel)
-* [Verbindungs-Details](user-story.md#verbindung-details-anzeigen)
+* [Station suchen](user-story.md#station-suchen)
 
 ### Prio 2
 

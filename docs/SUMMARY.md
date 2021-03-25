@@ -1,5 +1,6 @@
 # Table of contents
 
-* [Start](README.md)
+* [Dokumentation](README.md)
 * [User Story](user-story.md)
+* [Mockup](mockup.md)
 
