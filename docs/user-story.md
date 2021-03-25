@@ -4,17 +4,35 @@ description: Here are the UserStorys
 
 # User Story
 
-## 
-
 ## User Roles
 
 ### Benutzer
 
 Normaler verwender der Applikation.
 
-## Verbindung suchen
+## Station suchen
 
 ID: 1
+
+Als [Benutzer](user-story.md#benutzer) möchte ich 
+
+mindestens die nächsten Vier Verbindungen zwischen Start und Zielstation angezeigt sehen, um
+
+die Verbindungen zu sehen.
+
+### AK
+
+| AK | Beschreibung |
+| :--- | :--- |
+| AK-1 | Durch die eingabe kann eine Station eingegeben werden und nach dieser Station gesucht werden. |
+
+### Priorität
+
+Diese User-Story hat die Priorität 1
+
+## Verbindung suchen
+
+ID: 2
 
 Als [Benutzer](user-story.md#benutzer) möchte ich 
 
@@ -36,7 +54,7 @@ Diese User-Story hat die Priorität 1
 
 ## Abfahrtstafel
 
-ID: 2
+ID: 3
 
 Als [Benutzer](user-story.md#benutzer) möchte ich 
 
@@ -57,7 +75,7 @@ Diese User-Story hat die Priorität 1
 
 ## Geplante Abfahrt
 
-ID: 3
+ID: 12
 
 Als [Benutzer](user-story.md#benutzer) möchte ich 
 
