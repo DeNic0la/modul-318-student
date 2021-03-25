@@ -1,6 +1,7 @@
-# modul-318-Student
+# modul-318-Nicola
 
-Students!
-Fork this repository to your own Github account. Work there with this repository. The intructor will clone your repo for inspection and evaluation.
+This is my Code for the ÜK-318-1
 
-Have Fun!
+# Links
+
+* [User-Storys](docs/user-story.md)    
