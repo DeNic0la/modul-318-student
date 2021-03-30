@@ -21,8 +21,13 @@
                 throw new ArgumentNullException(nameof(query));
             }
 
-            var uri = new Uri($"{WebApiHost}locations?query={query}");
-            return HttpClient.GetObject(uri, JsonConvert.DeserializeObject<Stations>);
+            var uri = new Uri($"{WebApiHost}locations?query={query}");        
+            return HttpClient.GetObject(uri, 
+                input => JsonConvert.DeserializeObject<Stations>(input, 
+                new JsonSerializerSettings 
+                {
+                    NullValueHandling = NullValueHandling.Ignore 
+                }));       
         }
 
         public StationBoardRoot GetStationBoard(string station, string id)
@@ -38,7 +43,12 @@
             }
 
             var uri = new Uri($"{WebApiHost}stationboard?station={station}&id={id}");
-            return HttpClient.GetObject(uri, JsonConvert.DeserializeObject<StationBoardRoot>);
+            return HttpClient.GetObject(uri,
+                input => JsonConvert.DeserializeObject<StationBoardRoot>(input,
+                new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                }));
         }
 
         public Connections GetConnections(string fromStation, string toStation)

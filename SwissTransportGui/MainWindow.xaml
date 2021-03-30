@@ -22,23 +22,58 @@
                 <ColumnDefinition Width="10*" MinWidth="200" MaxWidth="400"/>
                 <ColumnDefinition Width="10*" MinWidth="200"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="0" Grid.Column="0" x:Name="textBoxStartStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="von" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <TextBox Grid.Row="0" Grid.Column="0" x:Name="textBoxStartStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" TextChanged="textBoxStartStation_TextChanged"/>
             <Label Grid.Row="0" Grid.Column="0" x:Name="labelStartStation" Content="Startstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
-            <TextBox Grid.Row="0" Grid.Column="1" x:Name="textBoxEndStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="nach" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="textBoxEndStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
             <Label Grid.Row="0" Grid.Column="1" x:Name="labelEndStation" Content="Zielstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
-            <TextBox Grid.Row="0" Grid.Column="2" x:Name="textBoxAbfahrtszeit" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="nach" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
-            <Label Grid.Row="0" Grid.Column="2" x:Name="labelAbfahrtszeit" Content="Zielstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
-            <DatePicker Grid.Row="0" Grid.Column="2" Margin="20,70,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
-            <TabControl Grid.Column="3" HorizontalAlignment="Left" Height="100" Margin="105,35,0,0" Grid.RowSpan="2" VerticalAlignment="Top" Width="100">
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
+            <TextBox Grid.Row="0" Grid.Column="2" x:Name="textBoxAbfahrtszeit" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <Label Grid.Row="0" Grid.Column="2" x:Name="labelAbfahrtszeit" Content="Zeitpunkt" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <DatePicker x:Name="datePickerAbfahrtszeit" Grid.Row="0" Grid.Column="2" Margin="20,70,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <TabControl x:Name="tabControlStationButton" Grid.Column="3" Margin="1" BorderBrush="White" Foreground="White">
+                <TabItem x:Name="tabItemStationNearbyButton" Header="TabItem" Visibility="Collapsed">
+                    <Grid Background="White">
+                        <Button x:Name="buttonStationsNearby" Content="Stationen in der Nähe anzeigen" Margin="10" MinWidth="60" MinHeight="30"/>
+                    </Grid>
                 </TabItem>
-                <TabItem Header="TabItem">
-                    <Grid Background="#FFE5E5E5"/>
+                <TabItem x:Name="tabItemStationBoardButton" Header="TabItem" Visibility="Collapsed">
+                    <Grid Background="White">
+                        <Button x:Name="buttonStationBoard" Content="Abfahrtstafel Anzeigen" Margin="10" MinWidth="60" MinHeight="30" Click="buttonStationBoard_Click"/>
+                    </Grid>
+                </TabItem>
+
+            </TabControl>
+            <TabControl Margin="10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="White">
+                <TabItem x:Name="tabItemSearchStationButton" Header="TabItem" Visibility="Collapsed">
+                    <Grid Background="White">
+                        <Button x:Name="buttonSearchStation" Content="Station suchen" Margin="10" MinWidth="60" MinHeight="30" Click="buttonSearchStation_Click"/>
+                    </Grid>
+                </TabItem>
+                <TabItem x:Name="tabItemSearchConnectionButton" Header="TabItem" Visibility="Collapsed">
+                    <Grid Background="White">
+                        <Button x:Name="buttonSearchConnection" Content="Verbindung suchen" Margin="10" MinWidth="60" MinHeight="30"/>
+                    </Grid>
                 </TabItem>
             </TabControl>
 
         </Grid>
+        <TabControl Margin="10" Grid.Row="1" BorderBrush="White">
+            <TabItem x:Name="tabItemStationDisplayer" Header="TabItem" Visibility="Collapsed">
+                <Grid Background="White">
+                    
+                    <StackPanel x:Name="stackPanelStationDisplayer" Margin="30,0" >
+
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItemShowStationBoard" Header="TabItem" Visibility="Collapsed">
+                <Grid Background="White">
+                    <DataGrid x:Name="dataGridStationBoard" />
+                </Grid>
+            </TabItem>
+            <TabItem Header="TabItem" Visibility="Collapsed">
+                <Grid Background="White"/>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>
