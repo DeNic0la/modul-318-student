@@ -8,34 +8,21 @@ namespace SwissTransportGui
 {
     class ConnectionEntry
     {
-        public string Dauer { get; set; }
+        
         public string Abfahrtsort { get; set; }
         public string Gleis { get; set; }
+        public string Linie { get; set; }
         public string Abfahrt { get; set; }
+
+        public string Dauer { get; set; }
         public string Ankunftsort { get; set; }
         public string Ankunft { get; set; }
 
-        //---
-        public string ArrivalTimeStamp { get; set; }
-        public string DepartureTimeStamp { get; set; }
-        public string Delay { get; set; }
-        public string RealTimeAvailability { get; set; }
+
 
         public ConnectionEntry() { }
-        public ConnectionEntry(string Dauer, string Abfahrtsort,string Gleis,string Abfahrt,
-            string Ankunftsort, string Ankunft, string arrivalTimestamp)
-        {
-            this.Dauer = Dauer;
-            this.Abfahrtsort = Abfahrtsort;
-            this.Gleis = Gleis;
-            this.Abfahrt = Abfahrt;
-            this.Ankunftsort = Ankunftsort;
-            this.Ankunft = Ankunft;
-
-        }
         public ConnectionEntry(string Dauer, string Abfahrtsort, string Gleis, string Abfahrt,
-            string Ankunftsort, string Ankunft, string ArrivalTimeStamp, string DepartureTimeStamp,
-            string Delay, string RealTimeAvailability)
+            string Ankunftsort, string Ankunft, string Linie)
         {
             this.Dauer = Dauer;
             this.Abfahrtsort = Abfahrtsort;
@@ -43,11 +30,7 @@ namespace SwissTransportGui
             this.Abfahrt = Abfahrt;
             this.Ankunftsort = Ankunftsort;
             this.Ankunft = Ankunft;
-            this.ArrivalTimeStamp = ArrivalTimeStamp;
-            this.DepartureTimeStamp = DepartureTimeStamp;
-            this.Delay = Delay;
-            this.RealTimeAvailability = RealTimeAvailability;
-
+            this.Linie = Linie;
         }
     }
 }

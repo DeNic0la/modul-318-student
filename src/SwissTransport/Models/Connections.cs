@@ -2,7 +2,7 @@ namespace SwissTransport.Models
 {
     using System;
     using System.Collections.Generic;
-
+    using System.Linq;
     using Newtonsoft.Json;
 
     public class Connections
@@ -17,13 +17,12 @@ namespace SwissTransport.Models
         [JsonProperty("to")] public ConnectionPoint To { get; set; }
 
         [JsonProperty("duration")] public string Duration { get; set; }
-        [JsonProperty("to")] public Sections section { get; set; }
-    }
-
-    public class Sections
-    {
         [JsonProperty("sections")] public List<Section> SectionList { get; set; }
-        
+
+        public string getLine()
+        {
+            Section s = SectionList.First();
+        }
     }
     public class Section
     {

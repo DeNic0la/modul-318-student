@@ -64,7 +64,7 @@ namespace SwissTransportGui
         }
         private bool isStationValid(string toSearchFor)
         {
-            Stations foundStations = MockData.GetStations();   //transport.GetStations(toSearchFor+",");//TODO: SWAP THIS
+            Stations foundStations = transport.GetStations(toSearchFor+",");//TODO: SWAP THIS MockData.GetStations();   //
             foreach (Station s in foundStations.StationList)
             {
                 if (s.Name != null && s.Name.Equals(toSearchFor, StringComparison.CurrentCultureIgnoreCase))
@@ -132,8 +132,15 @@ namespace SwissTransportGui
         {
             Connections connections = transport.GetConnections(textBoxStartStation.Text, textBoxEndStation.Text);
             List<ConnectionEntry> connectionEntries = new List<ConnectionEntry>();
-            connections.ConnectionList.ForEach(x => connectionEntries.Add(new ConnectionEntry(x.Duration, x.From.Station.Name, x.From.Platform,
-               x.To.Arrival.HasValue ? x.To.Arrival.ToString() : "",x.To.Station.Name, x.From.Arrival.HasValue ? x.From.Arrival.ToString() : "", x.To.ArrivalTimestamp, x.From.DepartureTimestamp, x.From.Delay.HasValue ? x.From.Delay.ToString() : "", x.From.RealtimeAvailability)));
+            
+            connections.ConnectionList.ForEach(x => connectionEntries.Add(new ConnectionEntry(
+                x.Duration, 
+                x.From.Station.Name, 
+                x.From.Platform,
+                x.From.Departure.HasValue ? x.From.Departure.ToString() : "",
+                x.To.Station.Name,
+                x.To.Arrival.HasValue ? x.To.Arrival.ToString() : "",
+                "")));
 
             dataGridConnections.ItemsSource = connectionEntries;
             tabItemShowConnections.IsSelected = true;
