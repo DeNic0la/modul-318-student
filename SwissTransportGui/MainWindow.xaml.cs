@@ -36,28 +36,38 @@ namespace SwissTransportGui
 
         private void textBoxStartStation_TextChanged(object sender, TextChangedEventArgs e)
         {
-            updateTabControllStationButton();
+            updateTabControll();
             /*currentStartStationSearchThread.Abort();
             currentStartStationSearchThread = new Thread(updateTabControllStationButton);
             currentStartStationSearchThread.Start();*/
         }
-        private void updateTabControllStationButton() {
+        private void textBoxEndStation_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            updateTabControll();
+        }
+        private void updateTabControll() {
             if (tabItemStationBoardButton == null)
                 return;
-            if (isStationValid((textBoxStartStation.Text.Trim()))) {
+            //Check Start Station
+            if (isStationValid((textBoxStartStation.Text))) {
                 tabItemStationBoardButton.IsSelected = true;
+                if (isStationValid((textBoxEndStation.Text)) && textBoxEndStation.Text != textBoxStartStation.Text)
+                    tabItemSearchConnectionButton.IsSelected = true;
+                else
+                    tabItemSearchStationButton.IsSelected = true;
             }
             else {
                 tabItemStationNearbyButton.IsSelected = true;
+                tabItemSearchStationButton.IsSelected = true;
             }
             
         }
         private bool isStationValid(string toSearchFor)
         {
-            Stations foundStations = MockData.GetStations();   //transport.GetStations(toSearchFor.Text+",");//TODO: SWAP THIS
+            Stations foundStations = MockData.GetStations();   //transport.GetStations(toSearchFor+",");//TODO: SWAP THIS
             foreach (Station s in foundStations.StationList)
             {
-                if (s.Name.Equals(toSearchFor, StringComparison.CurrentCultureIgnoreCase))
+                if (s.Name != null && s.Name.Equals(toSearchFor, StringComparison.CurrentCultureIgnoreCase))
                     return true;
             }            
             return false;
@@ -105,10 +115,30 @@ namespace SwissTransportGui
         {
             Stations foundStations = transport.GetStations(textBoxStartStation.Text);
             Station s = foundStations.StationList.First();
-            StationBoardRoot sb = transport.GetStationBoard(s.Name,s.Id);
-            dataGridStationBoard.ItemsSource = sb.Entries;
+            StationBoardRoot sbr = transport.GetStationBoard(s.Name,s.Id);
+            dataGridStationBoard.ItemsSource = sbr.Entries;
             tabItemShowStationBoard.IsSelected = true;
+            List<StationBoardEntry> stationBoardEntryListToDisplay = new List<StationBoardEntry>();
+            //dataGridStationBoard.ItemsSource = stationBoardEntryListToDisplay;
+            foreach (StationBoard sb in sbr.Entries)
+            {
+                StationBoardEntry stationBoardEntry = new StationBoardEntry( sb.Stop.Departure.ToString("dd.MM.yyyy. HH:mm"), sb.Category+" "+sb.Number, sb.To);
+                stationBoardEntryListToDisplay.Add(stationBoardEntry);
+            }
             
+        }
+
+        private void buttonSearchConnection_Click(object sender, RoutedEventArgs e)
+        {
+            Connections connections = transport.GetConnections(textBoxStartStation.Text, textBoxEndStation.Text);
+            List<ConnectionEntry> connectionEntries = new List<ConnectionEntry>();
+            connections.ConnectionList.ForEach(x => connectionEntries.Add(new ConnectionEntry(x.Duration, x.From.Station.Name, x.From.Platform,
+               x.To.Arrival.HasValue ? x.To.Arrival.ToString() : "",x.To.Station.Name, x.From.Arrival.HasValue ? x.From.Arrival.ToString() : "", x.To.ArrivalTimestamp, x.From.DepartureTimestamp, x.From.Delay.HasValue ? x.From.Delay.ToString() : "", x.From.RealtimeAvailability)));
+
+            dataGridConnections.ItemsSource = connectionEntries;
+            tabItemShowConnections.IsSelected = true;
+
+
         }
     }
 }

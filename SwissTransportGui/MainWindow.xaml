@@ -24,7 +24,7 @@
             </Grid.ColumnDefinitions>
             <TextBox Grid.Row="0" Grid.Column="0" x:Name="textBoxStartStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" TextChanged="textBoxStartStation_TextChanged"/>
             <Label Grid.Row="0" Grid.Column="0" x:Name="labelStartStation" Content="Startstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
-            <TextBox Grid.Row="0" Grid.Column="1" x:Name="textBoxEndStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
+            <TextBox Grid.Row="0" Grid.Column="1" x:Name="textBoxEndStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" TextChanged="textBoxEndStation_TextChanged"/>
             <Label Grid.Row="0" Grid.Column="1" x:Name="labelEndStation" Content="Zielstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
             <TextBox Grid.Row="0" Grid.Column="2" x:Name="textBoxAbfahrtszeit" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
             <Label Grid.Row="0" Grid.Column="2" x:Name="labelAbfahrtszeit" Content="Zeitpunkt" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
@@ -50,7 +50,7 @@
                 </TabItem>
                 <TabItem x:Name="tabItemSearchConnectionButton" Header="TabItem" Visibility="Collapsed">
                     <Grid Background="White">
-                        <Button x:Name="buttonSearchConnection" Content="Verbindung suchen" Margin="10" MinWidth="60" MinHeight="30"/>
+                        <Button x:Name="buttonSearchConnection" Content="Verbindung suchen" Margin="10" MinWidth="60" MinHeight="30" Click="buttonSearchConnection_Click"/>
                     </Grid>
                 </TabItem>
             </TabControl>
@@ -68,6 +68,11 @@
             <TabItem x:Name="tabItemShowStationBoard" Header="TabItem" Visibility="Collapsed">
                 <Grid Background="White">
                     <DataGrid x:Name="dataGridStationBoard" />
+                </Grid>
+            </TabItem>
+            <TabItem x:Name="tabItemShowConnections" Header="TabItem" Visibility="Collapsed">
+                <Grid Background="White">
+                    <DataGrid x:Name="dataGridConnections" />
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem" Visibility="Collapsed">

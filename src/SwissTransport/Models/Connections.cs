@@ -17,8 +17,29 @@ namespace SwissTransport.Models
         [JsonProperty("to")] public ConnectionPoint To { get; set; }
 
         [JsonProperty("duration")] public string Duration { get; set; }
+        [JsonProperty("to")] public Sections section { get; set; }
     }
 
+    public class Sections
+    {
+        [JsonProperty("sections")] public List<Section> SectionList { get; set; }
+        
+    }
+    public class Section
+    {
+        [JsonProperty("journey")] public Journey journey { get; set; }
+        [JsonProperty("walk")] public string Walk { get; set; }
+    }
+    public class Journey
+    {
+        [JsonProperty("name")] public string Name { get; set; }
+        [JsonProperty("category")] public string Category { get; set; }
+        [JsonProperty("categoryCode")] public string CategoryCode { get; set; }
+        [JsonProperty("number")] public string Number { get; set; }
+        [JsonProperty("operator")] public string Operator { get; set; }
+        [JsonProperty("to")] public string FinalDestination { get; set; }
+        [JsonProperty("passList")] public List<ConnectionPoint> connectionPointsOnJourney { get; set; }
+    }
     public class ConnectionPoint
     {
         [JsonProperty("station")] public Station Station { get; set; }

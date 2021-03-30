@@ -21,7 +21,7 @@
                 throw new ArgumentNullException(nameof(query));
             }
 
-            var uri = new Uri($"{WebApiHost}locations?query={query}");        
+            var uri = new Uri($"{WebApiHost}locations?query={query}");
             return HttpClient.GetObject(uri, 
                 input => JsonConvert.DeserializeObject<Stations>(input, 
                 new JsonSerializerSettings 
@@ -49,6 +49,7 @@
                 {
                     NullValueHandling = NullValueHandling.Ignore
                 }));
+            
         }
 
         public Connections GetConnections(string fromStation, string toStation)
@@ -64,7 +65,12 @@
             }
 
             var uri = new Uri($"{WebApiHost}connections?from={fromStation}&to={toStation}");
-            return HttpClient.GetObject(uri, JsonConvert.DeserializeObject<Connections>);
+            return HttpClient.GetObject(uri,
+               input => JsonConvert.DeserializeObject<Connections>(input,
+               new JsonSerializerSettings
+               {
+                   NullValueHandling = NullValueHandling.Ignore
+               }));
         }
 
         public void Dispose()
