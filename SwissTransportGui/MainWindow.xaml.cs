@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Device.Location;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,6 +19,8 @@ using SwissTransport;
 using SwissTransport.Models;
 using SwissTransportView.Mock;
 using System.Text.RegularExpressions;
+using System.Device.Location;
+using SwissTransportGUI;
 
 namespace SwissTransportGui
 {
@@ -28,6 +31,7 @@ namespace SwissTransportGui
     {
         //Thread currentStartStationSearchThread = new Thread(x => Console.WriteLine("ThreadStarted") );
         Transport transport = new Transport();
+        MapWindow mapWindow;
 
         public List<StationBoardEntry> stationBoardEntryListToDisplay = new List<StationBoardEntry>();
         List<ConnectionEntry> connectionEntryListToDisplay = new List<ConnectionEntry>();
@@ -40,6 +44,8 @@ namespace SwissTransportGui
         public MainWindow()
         {
             InitializeComponent();
+            //Initialize the Formater used for Map Data
+            GoogleMapsHelper.numberFormatInfo.NumberDecimalSeparator = ".";
         }
 
         private void textBoxStartStation_TextChanged(object sender, TextChangedEventArgs e)
@@ -257,11 +263,20 @@ namespace SwissTransportGui
                 }
             }
         }
-
+        
         private void buttonStationsNearby_Click(object sender, RoutedEventArgs e)
         {
-            MapWindow mw = new MapWindow();
-            mw.Show();
+            GeoLocationHelper geoLocationHelper = new GeoLocationHelper();
+            GeoCoordinate geocoordinate = geoLocationHelper.GeoCoordinate;
+
+            if (geocoordinate != null)
+            {
+                GoogleMapsHelper.openLocation(geocoordinate.Altitude.ToString(GoogleMapsHelper.numberFormatInfo), geocoordinate.Latitude.ToString(GoogleMapsHelper.numberFormatInfo));
+                Stations nearestStations = transport.GetStationsByLocation(geocoordinate.Latitude.ToString(GoogleMapsHelper.numberFormatInfo), geocoordinate.Longitude.ToString(GoogleMapsHelper.numberFormatInfo));
+                mapWindow = new MapWindow(nearestStations.StationList);
+                mapWindow.Show();
+            }
+
         }
     }
 }

@@ -7,6 +7,8 @@
         mc:Ignorable="d"
         Title="MapWindow" Height="450" Width="800">
     <Grid x:Name="gridWindowBase">
-        
+        <StackPanel x:Name="stackPanelButtons" Margin="10"/>
+
+
     </Grid>
 </Window>

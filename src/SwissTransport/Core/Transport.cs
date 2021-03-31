@@ -31,6 +31,19 @@
                     NullValueHandling = NullValueHandling.Ignore 
                 }));       
         }
+        public Stations GetStationsByLocation(string Latitude, string Longitude)
+        {
+            
+
+            var uri = new Uri($"{WebApiHost}locations?x={Latitude}&y={Longitude}&type=station");
+            return HttpClient.GetObject(uri,
+                input => JsonConvert.DeserializeObject<Stations>(input,
+                new JsonSerializerSettings
+                {
+                    NullValueHandling = NullValueHandling.Ignore
+                }));
+        }
+
 
         public StationBoardRoot GetStationBoard(string station, string id)
         {
