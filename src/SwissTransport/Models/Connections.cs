@@ -19,15 +19,25 @@ namespace SwissTransport.Models
         [JsonProperty("duration")] public string Duration { get; set; }
         [JsonProperty("sections")] public List<Section> SectionList { get; set; }
 
-        public string getLine()
+        public List<string> Line
         {
-            Section s = SectionList.First();
+            get 
+            {
+                List<string> toReturn = new List<string>();
+                foreach(Section s in SectionList)
+                {
+                    toReturn.Add((s.journey?.Category ?? "")+(s.journey?.Number ?? ""));
+                }
+                return toReturn;
+            }
         }
+        
+
+        
     }
     public class Section
     {
         [JsonProperty("journey")] public Journey journey { get; set; }
-        [JsonProperty("walk")] public string Walk { get; set; }
     }
     public class Journey
     {

@@ -31,6 +31,6 @@ namespace SwissTransportGui
             this.Ankunftsort = Ankunftsort;
             this.Ankunft = Ankunft;
             this.Linie = Linie;
-        }
+        }        
     }
 }

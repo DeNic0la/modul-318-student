@@ -17,6 +17,7 @@ using System.Threading;
 using SwissTransport;
 using SwissTransport.Models;
 using SwissTransportView.Mock;
+using System.Text.RegularExpressions;
 
 namespace SwissTransportGui
 {
@@ -27,11 +28,18 @@ namespace SwissTransportGui
     {
         //Thread currentStartStationSearchThread = new Thread(x => Console.WriteLine("ThreadStarted") );
         Transport transport = new Transport();
-        
+
+        public List<StationBoardEntry> stationBoardEntryListToDisplay = new List<StationBoardEntry>();
+        List<ConnectionEntry> connectionEntryListToDisplay = new List<ConnectionEntry>();
+
+        private static readonly Regex numberRegex = new Regex("[0-9]");
+        private static readonly Regex timeRegex = new Regex("^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$");
+
+
 
         public MainWindow()
         {
-            InitializeComponent();            
+            InitializeComponent();
         }
 
         private void textBoxStartStation_TextChanged(object sender, TextChangedEventArgs e)
@@ -44,6 +52,7 @@ namespace SwissTransportGui
         private void textBoxEndStation_TextChanged(object sender, TextChangedEventArgs e)
         {
             updateTabControll();
+            datePickerAbfahrtszeit.BlackoutDates.AddDatesInPast();
         }
         private void updateTabControll() {
             if (tabItemStationBoardButton == null)
@@ -66,8 +75,11 @@ namespace SwissTransportGui
         {
             Stations foundStations = transport.GetStations(toSearchFor+",");//TODO: SWAP THIS MockData.GetStations();   //
             foreach (Station s in foundStations.StationList)
-            {
-                if (s.Name != null && s.Name.Equals(toSearchFor, StringComparison.CurrentCultureIgnoreCase))
+            {              
+                
+                if (s.Name != null 
+                    && (s.Name.Equals(toSearchFor, StringComparison.CurrentCultureIgnoreCase) 
+                    || s.Name.IndexOf((", "+toSearchFor), StringComparison.OrdinalIgnoreCase) >0 ))
                     return true;
             }            
             return false;
@@ -75,6 +87,7 @@ namespace SwissTransportGui
 
         private void buttonSearchStation_Click(object sender, RoutedEventArgs e)
         {
+            Mouse.OverrideCursor = Cursors.Wait;
             Stations foundStations = transport.GetStations(textBoxStartStation.Text);   
             
             
@@ -94,10 +107,12 @@ namespace SwissTransportGui
                 b.Margin = margin;
                 b.Click += buttonClickPutTextInStationField;
             }
+            Mouse.OverrideCursor = null;
         }
 
         private void buttonClickPutTextInStationField(object sender, RoutedEventArgs e)
         {
+            Mouse.OverrideCursor = Cursors.Wait;
             if (sender is Button)
             {
                 try
@@ -108,44 +123,124 @@ namespace SwissTransportGui
                 
             }
 
-
+            Mouse.OverrideCursor = null;
         }
 
         private void buttonStationBoard_Click(object sender, RoutedEventArgs e)
         {
+            Mouse.OverrideCursor = Cursors.Wait;
             Stations foundStations = transport.GetStations(textBoxStartStation.Text);
             Station s = foundStations.StationList.First();
             StationBoardRoot sbr = transport.GetStationBoard(s.Name,s.Id);
-            dataGridStationBoard.ItemsSource = sbr.Entries;
             tabItemShowStationBoard.IsSelected = true;
-            List<StationBoardEntry> stationBoardEntryListToDisplay = new List<StationBoardEntry>();
-            //dataGridStationBoard.ItemsSource = stationBoardEntryListToDisplay;
+            dataGridStationBoard.ItemsSource = null;
+            stationBoardEntryListToDisplay.Clear();
+            
             foreach (StationBoard sb in sbr.Entries)
             {
-                StationBoardEntry stationBoardEntry = new StationBoardEntry( sb.Stop.Departure.ToString("dd.MM.yyyy. HH:mm"), sb.Category+" "+sb.Number, sb.To);
+                StationBoardEntry stationBoardEntry = new StationBoardEntry( sb.Stop.Departure.ToString("HH:mm"), sb.Category+" "+sb.Number, sb.To);
                 stationBoardEntryListToDisplay.Add(stationBoardEntry);
             }
-            
+
+            Mouse.OverrideCursor = null;
+            dataGridStationBoard.ItemsSource = stationBoardEntryListToDisplay;
         }
 
         private void buttonSearchConnection_Click(object sender, RoutedEventArgs e)
         {
-            Connections connections = transport.GetConnections(textBoxStartStation.Text, textBoxEndStation.Text);
-            List<ConnectionEntry> connectionEntries = new List<ConnectionEntry>();
-            
-            connections.ConnectionList.ForEach(x => connectionEntries.Add(new ConnectionEntry(
-                x.Duration, 
-                x.From.Station.Name, 
-                x.From.Platform,
-                x.From.Departure.HasValue ? x.From.Departure.ToString() : "",
-                x.To.Station.Name,
-                x.To.Arrival.HasValue ? x.To.Arrival.ToString() : "",
-                "")));
+            Mouse.OverrideCursor = Cursors.Wait;
+            DateTime? dateTimeFromPicker = null;
+            string timeFromInput = "";
+            if (textBoxAbfahrtszeit.Text != "00:00" && timeRegex.IsMatch(textBoxAbfahrtszeit.Text))
+            {
+                timeFromInput = textBoxAbfahrtszeit.Text;
+                dateTimeFromPicker = datePickerAbfahrtszeit.SelectedDate;
+            }
+            Connections returnedConnections = transport.GetConnectionsWithTime(textBoxStartStation.Text, textBoxEndStation.Text,dateTimeFromPicker,timeFromInput);
+            dataGridConnections.ItemsSource = null;
+            connectionEntryListToDisplay.Clear();
 
-            dataGridConnections.ItemsSource = connectionEntries;
+
+            foreach (Connection c in returnedConnections.ConnectionList)
+            {
+                connectionEntryListToDisplay.Add(
+                    new ConnectionEntry(
+                        c.Duration,
+                        c.From.Station.Name,
+                        c.From.Platform,
+                        convertDateTimeToString(c.From.Departure,"dd.MM.yy HH:mm"),
+                        c.To.Station.Name,
+                        convertDateTimeToString(c.To.Arrival,"HH:mm"),
+                        c.Line.First()));
+            }            
+
+            dataGridConnections.ItemsSource = connectionEntryListToDisplay;
             tabItemShowConnections.IsSelected = true;
 
+            Mouse.OverrideCursor = null;
+        }
+        private string convertDateTimeToString(DateTime? input,string format)
+        {
+            if (input.HasValue)
+                return format == "" ? (input ?? DateTime.Now).ToString() : (input ?? DateTime.Now).ToString(format);
+            return "";
+        }
 
+        private void textBoxStartStation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (isStationValid(textBoxStartStation.Text))
+                {
+                    buttonStationBoard_Click(sender, e);
+                }
+            }
+        }
+
+        private void textBoxEndStation_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                if (isStationValid(textBoxStartStation.Text) && isStationValid(textBoxEndStation.Text))
+                {
+                    buttonSearchConnection_Click(sender, e);
+                }
+            }
+        }
+
+        private void textBoxAbfahrtszeit_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = isTextIllegal(e.Text);
+            if (textBoxAbfahrtszeit.Text.Length == 2)
+            {
+                textBoxAbfahrtszeit.Text += ":";
+                textBoxAbfahrtszeit.CaretIndex = 3;
+            }
+        }
+         
+        private bool isTextIllegal(string text)
+        {
+            if (!numberRegex.IsMatch(text))
+                return true;
+            if (textBoxAbfahrtszeit.Text.Length > 4)
+                return true;
+            return false;
+        }
+
+        private void textBoxAbfahrtszeit_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!timeRegex.IsMatch(textBoxAbfahrtszeit.Text))
+            {
+                textBoxAbfahrtszeit.Text = "";
+            }
+        }
+
+        private void textBoxAbfahrtszeit_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (textBoxAbfahrtszeit.Text == "00:00")
+            {
+                textBoxAbfahrtszeit.Text = "";
+            }
         }
     }
 }

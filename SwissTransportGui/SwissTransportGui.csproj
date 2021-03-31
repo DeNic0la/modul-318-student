@@ -58,8 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ConnectionEntry.cs" />
-    <Compile Include="StationBoardEntry.cs" />
+    <Compile Include="DisplayModel\ConnectionEntry.cs" />
+    <Compile Include="DisplayModel\StationBoardEntry.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
