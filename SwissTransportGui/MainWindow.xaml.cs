@@ -73,6 +73,8 @@ namespace SwissTransportGui
         }
         private bool isStationValid(string toSearchFor)
         {
+            if (toSearchFor.Length < 1)
+                return false;
             Stations foundStations = transport.GetStations(toSearchFor+",");//TODO: SWAP THIS MockData.GetStations();   //
             foreach (Station s in foundStations.StationList)
             {              
@@ -87,7 +89,7 @@ namespace SwissTransportGui
 
         private void buttonSearchStation_Click(object sender, RoutedEventArgs e)
         {
-            Mouse.OverrideCursor = Cursors.Wait;
+            Mouse.OverrideCursor = Cursors.Wait;            
             Stations foundStations = transport.GetStations(textBoxStartStation.Text);   
             
             
@@ -241,6 +243,25 @@ namespace SwissTransportGui
             {
                 textBoxAbfahrtszeit.Text = "";
             }
+        }
+
+        private void textBoxAbfahrtszeit_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if (e.Key == Key.Enter)
+            {
+                textBoxAbfahrtszeit_LostFocus(sender, e);
+                if (isStationValid(textBoxStartStation.Text) && isStationValid(textBoxEndStation.Text))
+                {
+                    buttonSearchConnection_Click(sender, e);
+                }
+            }
+        }
+
+        private void buttonStationsNearby_Click(object sender, RoutedEventArgs e)
+        {
+            MapWindow mw = new MapWindow();
+            mw.Show();
         }
     }
 }

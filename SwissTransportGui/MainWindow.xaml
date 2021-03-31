@@ -26,13 +26,13 @@
             <Label Grid.Row="0" Grid.Column="0" x:Name="labelStartStation" Content="Startstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
             <TextBox Grid.Row="0" Grid.Column="1" TabIndex="1" x:Name="textBoxEndStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" TextChanged="textBoxEndStation_TextChanged" KeyDown="textBoxEndStation_KeyDown"/>
             <Label Grid.Row="0" Grid.Column="1" x:Name="labelEndStation" Content="Zielstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
-            <TextBox Grid.Row="0" Grid.Column="2" TabIndex="2" x:Name="textBoxAbfahrtszeit" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" PreviewTextInput="textBoxAbfahrtszeit_PreviewTextInput" LostFocus="textBoxAbfahrtszeit_LostFocus" GotFocus="textBoxAbfahrtszeit_GotFocus"/>
+            <TextBox Grid.Row="0" Grid.Column="2" TabIndex="2" x:Name="textBoxAbfahrtszeit" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" PreviewTextInput="textBoxAbfahrtszeit_PreviewTextInput" LostFocus="textBoxAbfahrtszeit_LostFocus" GotFocus="textBoxAbfahrtszeit_GotFocus" KeyDown="textBoxAbfahrtszeit_KeyDown"/>
             <Label Grid.Row="0" Grid.Column="2" x:Name="labelAbfahrtszeit" Content="Zeitpunkt" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
             <DatePicker x:Name="datePickerAbfahrtszeit" TabIndex="3" Grid.Row="0" Grid.Column="2" Margin="20,70,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
             <TabControl x:Name="tabControlStationButton" Grid.Column="3" Margin="1" BorderBrush="White" Foreground="White">
                 <TabItem x:Name="tabItemStationNearbyButton" Header="TabItem" Visibility="Collapsed">
                     <Grid Background="White">
-                        <Button x:Name="buttonStationsNearby" TabIndex="4" Content="Stationen in der Nähe anzeigen" Margin="10" MinWidth="60" MinHeight="30"/>
+                        <Button x:Name="buttonStationsNearby" TabIndex="4" Content="Stationen in der Nähe anzeigen" Margin="10" MinWidth="60" MinHeight="30" Click="buttonStationsNearby_Click"/>
                     </Grid>
                 </TabItem>
                 <TabItem x:Name="tabItemStationBoardButton" TabIndex="4" Header="TabItem" Visibility="Collapsed">
