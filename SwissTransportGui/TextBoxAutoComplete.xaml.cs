@@ -168,6 +168,7 @@ namespace SwissTransportGui
 
         private void textBoxInput_LostFocus(object sender, RoutedEventArgs e)
         {
+            
             if (!InternetHelper.hasInternetConnection())
             {
                 return;
@@ -175,13 +176,18 @@ namespace SwissTransportGui
             listBoxItemDisplay.Height = 0;
             if (string.IsNullOrEmpty(textBoxInput.Text))
                 return;
-            Station match = lastQueryedStations.Find(x => x.Name.Equals(textBoxInput.Text));
-            if (match != null)
+            try
             {
-                currentlySelectedStation = match;
-                isValidStation = true;
-                return;
+                Station match = lastQueryedStations.Find(x => x.Name.Equals(textBoxInput.Text));
+                if (match != null)
+                {
+                    currentlySelectedStation = match;
+                    isValidStation = true;
+                    return;
+                }
             }
+            catch (Exception) { }
+            
             List<Station> matchingStations = transport.GetStations(textBoxInput.Text).StationList;
             if (matchingStations.Count <= 0)
                 return;
