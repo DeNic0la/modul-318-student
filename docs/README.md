@@ -34,8 +34,7 @@ In dieser Dokumentation sind die User-Storys, die Mockups und Andere Planungsdok
 #### [Auto-Complete](user-story.md#auto-completion)
 
 {% hint style="warning" %}
-{% hint style="warning" %}**Anforderung:** die Benutzer-Texteingaben haben eine Autocompletion durch die Möglichen Stationsnahmen.  
-{% endhint %}
+**Anforderung:** die Benutzer-Texteingaben haben eine Autocompletion durch die Möglichen Stationsnahmen.
 {% endhint %}
 
 Umsetzung: Wenn in die Text-Box geschrieben wird tauchen vorschläge auf welche man auswählen kann, beim auswählen eines Vorschlags wird dieser zum inhalt der Text-Box gemacht
@@ -43,16 +42,38 @@ Umsetzung: Wenn in die Text-Box geschrieben wird tauchen vorschläge auf welche 
 #### [Karte](user-story.md#karte)
 
 {% hint style="warning" %}
-{% hint style="warning" %}**Anforderung:** Die Umliegenden Stationen werden auf der Karte mitangezeigt  
-{% endhint %}
+**Anforderung:** Die Umliegenden Stationen werden auf der Karte mitangezeigt
 {% endhint %}
 
 Umsetzung: Es wird auf der Karte Jeweils immer nur die ausgewählte Station angezeigt.
 
 {% hint style="warning" %}
-{% hint style="warning" %}**Anforderung:** Auf der Karte kann der Aktuelle standort angezeigt werden ohne ausgewählte Station  
+**Anforderung:** Auf der Karte kann der Aktuelle standort angezeigt werden ohne ausgewählte Station
 {% endhint %}
+
+Umsetzung: Es werden die Station in der Nähe als Button angezeigt, durch Klicken können die Einzelnen Stationen angesehen werden.
+
+#### [Favorit](user-story.md#favorit-station)
+
+{% hint style="warning" %}
+**Anforderung:** Favorit-Stationen können bereits vor der eingabe von Text ausgewählt werden
 {% endhint %}
+
+Umsetzung: Die Favorit-Stationen welche den Text aus der Text-Box beinhalten werden vor den anderen Stationen angezeigt.
+
+### Known-Issues
+
+
+
+## [Mockups](mockup.md)
+
+## Aktivitätsdiagramm
+
+Fill Here
+
+
+
+
 
 |  |
 | :--- |
