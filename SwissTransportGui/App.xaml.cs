@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
-
+using static System.Environment;
 
 namespace SwissTransportGui
 {
@@ -37,13 +37,13 @@ namespace SwissTransportGui
             {
                 Favorit.FavoritHelper.init(new List<string>());
             }
-
-
-            //MainWindow mw = new MainWindow();
-            //mw.Show();
         }
         private void Application_Exit(object sender, ExitEventArgs e)
         {
+         
+            
+          //SpecialFolder.ApplicationData TODO
+
             List<string> toSave = Favorit.FavoritHelper.Favorits;
             FileStream filestream = new FileStream("Favorits.txt", FileMode.Create);
             using (TextWriter tw = new StreamWriter(filestream))

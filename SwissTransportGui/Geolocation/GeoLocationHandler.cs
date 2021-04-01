@@ -11,10 +11,11 @@ namespace SwissTransportGui.Geolocation
     class GeoLocationHandler : IGeoLocationUpdateEvent
     {
         public MapWindow mapWindow;
+        public bool isLoading;
         private Transport transport = new Transport();
         private List<GeoLocationHelper> signedOn = new List<GeoLocationHelper>();
-        Thread currentCountdownUntilThrowingError;
-        public bool isLoading;
+        private Thread currentCountdownUntilThrowingError;
+        
 
         public GeoLocationHandler()
         {

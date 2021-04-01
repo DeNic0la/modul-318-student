@@ -3,6 +3,7 @@
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     using SwissTransport.Core;
+    using System;
 
     /// <summary>
     /// The Swiss Transport API tests.
@@ -35,6 +36,16 @@
         {
             testee = new Transport();
             var connections = this.testee.GetConnections("Sursee", "Luzern");
+
+            Assert.IsNotNull(connections);
+        }
+
+        
+        [TestMethod]
+        public void ConnectionsWithTime()
+        {
+            testee = new Transport(); 
+            var connections = this.testee.GetConnections("Sursee", "Luzern", DateTime.Now, "12:00");
 
             Assert.IsNotNull(connections);
         }

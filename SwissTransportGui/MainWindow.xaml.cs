@@ -33,9 +33,8 @@ namespace SwissTransportGui
         public MainWindow()
         {
             GoogleMapsHelper.numberFormatInfo.NumberDecimalSeparator = ".";
-            //PlayGround pg = new PlayGround();
-            //pg.Show();
             InitializeComponent();
+
             datePickerAbfahrtszeit.BlackoutDates.AddDatesInPast();
 
 
@@ -140,7 +139,7 @@ namespace SwissTransportGui
                 timeFromInput = textBoxAbfahrtszeit.Text;
                 dateTimeFromPicker = datePickerAbfahrtszeit.SelectedDate;
             }
-            Connections returnedConnections = transport.GetConnectionsWithTime(
+            Connections returnedConnections = transport.GetConnections(
                 textBoxStartStation.currentlySelectedStation.Name,
                 textBoxEndStation.currentlySelectedStation.Name,
                 dateTimeFromPicker, timeFromInput);
@@ -160,13 +159,6 @@ namespace SwissTransportGui
                         convertDateTimeToString(c.To.Arrival, "HH:mm"),
                         c.Line.First()));
             }
-
-            /*
-                DataGridTextColumn textColumn = new DataGridTextColumn(); 
-textColumn.Header = "First Name"; 
-textColumn.Binding = new Binding("FirstName"); 
-dataGrid.Columns.Add(textColumn);
-             */
 
             dataGridConnections.ItemsSource = connectionEntryListToDisplay;
             tabItemShowConnections.IsSelected = true;
@@ -275,7 +267,7 @@ dataGrid.Columns.Add(textColumn);
             }
             catch (Exception)
             {
-                MessageBox.Show("Für diese Funktion muss mindestens eine Verbindung oder Abfahrtstabelleneintrag markiert sein");
+                MessageBox.Show("Für diese Funktion muss eine Verbindung markiert sein");
             }
 
         }

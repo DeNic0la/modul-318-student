@@ -2,6 +2,7 @@
 {
 
     using SwissTransport.Models;
+    using System;
 
     public interface ITransport
     {
@@ -9,6 +10,6 @@
 
         StationBoardRoot GetStationBoard(string station, string id);
 
-        Connections GetConnections(string fromStation, string toStation);
+        Connections GetConnections(string fromStation, string toStation, DateTime? departureDate = null, string departureTime = null);
     }
 }

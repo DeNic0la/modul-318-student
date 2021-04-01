@@ -65,13 +65,7 @@
                 }));
 
         }
-        // For the Interface and Tests
-        public Connections GetConnections(string fromStation, string toStation)
-        {
-            return GetConnectionsWithTime(fromStation, toStation);
-        }
-
-        public Connections GetConnectionsWithTime(string fromStation, string toStation, DateTime? departureDate = null, string departureTime = null)
+        public Connections GetConnections(string fromStation, string toStation, DateTime? departureDate = null, string departureTime = null)
         {
             string uriString = $"{WebApiHost}connections?from={fromStation}&to={toStation}";
             if (departureTime != null)
@@ -115,5 +109,6 @@
         {
             HttpClient?.Dispose();
         }
+        
     }
 }
