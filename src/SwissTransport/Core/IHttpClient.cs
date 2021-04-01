@@ -1,7 +1,6 @@
 ﻿namespace SwissTransport.Core
 {
     using System;
-    using System.Threading.Tasks;
 
     public interface IHttpClient : IDisposable
     {

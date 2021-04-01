@@ -1,8 +1,7 @@
 ﻿namespace SwissTransport.Models
 {
-    using System.Collections.Generic;
-
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class Coordinate
     {

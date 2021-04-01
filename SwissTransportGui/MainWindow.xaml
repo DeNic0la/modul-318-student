@@ -6,25 +6,25 @@
         xmlns:local="clr-namespace:SwissTransportGui"
         mc:Ignorable="d"
         Title="Nicola's App to Swiss Transport" Height="636.022" Width="1096.954" Icon="logo_transparent.png" MinWidth="800">
-    <Grid>
+    <Grid x:Name="gridBase">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*" MinHeight="150" MaxHeight="400"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <Grid x:Name="dateConnectionTime" Grid.Row="0" Grid.Column="0">
+        <Grid x:Name="dateConnectionTime" Grid.Row="0" Grid.Column="0" Panel.ZIndex="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="10*" MinHeight="100" MaxHeight="200"/>
+                <RowDefinition Height="10*" MinHeight="100" MaxHeight="500"/>
                 <RowDefinition Height="8*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="12*" MinWidth="200" MaxWidth="400"/>
-                <ColumnDefinition Width="12*" MinWidth="200" MaxWidth="400"/>
-                <ColumnDefinition Width="10*" MinWidth="200" MaxWidth="400"/>
+                <ColumnDefinition Width="12*" MinWidth="200" MaxWidth="800"/>
+                <ColumnDefinition Width="12*" MinWidth="200" MaxWidth="800"/>
+                <ColumnDefinition Width="10*" MinWidth="200" MaxWidth="800"/>
                 <ColumnDefinition Width="10*" MinWidth="200"/>
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Row="0" Grid.Column="0" x:Name="textBoxStartStation" TabIndex="0" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" TextChanged="textBoxStartStation_TextChanged" KeyDown="textBoxStartStation_KeyDown"/>
+            <local:TextBoxAutoComplete Grid.RowSpan="2" Grid.Row="0" Margin="10,35,10,0" Grid.Column="0" x:Name="textBoxStartStation" MinWidth="100" MinHeight="200" Height="200" VerticalAlignment="Top" Panel.ZIndex="3"/>
             <Label Grid.Row="0" Grid.Column="0" x:Name="labelStartStation" Content="Startstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
-            <TextBox Grid.Row="0" Grid.Column="1" TabIndex="1" x:Name="textBoxEndStation" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" TextChanged="textBoxEndStation_TextChanged" KeyDown="textBoxEndStation_KeyDown"/>
+            <local:TextBoxAutoComplete Grid.RowSpan="2" Grid.Row="0" Margin="10,35,10,0" Grid.Column="1" x:Name="textBoxEndStation" MinWidth="100" MinHeight="200" Height="200" VerticalAlignment="Top" Panel.ZIndex="3"/>
             <Label Grid.Row="0" Grid.Column="1" x:Name="labelEndStation" Content="Zielstation" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
             <TextBox Grid.Row="0" Grid.Column="2" TabIndex="2" x:Name="textBoxAbfahrtszeit" Height="25" Margin="20,35,20,0" TextWrapping="Wrap" Text="00:00" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30" PreviewTextInput="textBoxAbfahrtszeit_PreviewTextInput" LostFocus="textBoxAbfahrtszeit_LostFocus" GotFocus="textBoxAbfahrtszeit_GotFocus" KeyDown="textBoxAbfahrtszeit_KeyDown"/>
             <Label Grid.Row="0" Grid.Column="2" x:Name="labelAbfahrtszeit" Content="Zeitpunkt" Margin="20,10,20,0" VerticalAlignment="Top" MinWidth="100" MinHeight="25" MaxWidth="200" MaxHeight="30"/>
@@ -42,7 +42,7 @@
                 </TabItem>
 
             </TabControl>
-            <TabControl Margin="10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="White">
+            <TabControl Margin="10" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" BorderBrush="White" MinHeight="30">
                 <TabItem x:Name="tabItemSearchStationButton" Header="TabItem" Visibility="Collapsed">
                     <Grid Background="White">
                         <Button x:Name="buttonSearchStation" Content="Station suchen" Margin="10" MinWidth="60" MinHeight="30" Click="buttonSearchStation_Click"/>
@@ -54,12 +54,14 @@
                     </Grid>
                 </TabItem>
             </TabControl>
-
+            <Button x:Name="btnSendMail" Grid.Column="3" HorizontalAlignment="Left" Margin="100,23.5,0,0" Grid.Row="1" VerticalAlignment="Top" Width="74" Click="btnSendMail_Click">
+               <Image Source="mail.png" /> 
+            </Button>
         </Grid>
         <TabControl Margin="10" Grid.Row="1" BorderBrush="White">
             <TabItem x:Name="tabItemStationDisplayer" Header="TabItem" Visibility="Collapsed">
                 <Grid Background="White">
-                    
+
                     <StackPanel x:Name="stackPanelStationDisplayer" Margin="30,0" >
 
                     </StackPanel>
@@ -72,7 +74,8 @@
             </TabItem>
             <TabItem x:Name="tabItemShowConnections" Header="TabItem" Visibility="Collapsed">
                 <Grid Background="White">
-                    <DataGrid x:Name="dataGridConnections" />
+                    <DataGrid x:Name="dataGridConnections">                        
+                    </DataGrid>
                 </Grid>
             </TabItem>
             <TabItem Header="TabItem" Visibility="Collapsed">

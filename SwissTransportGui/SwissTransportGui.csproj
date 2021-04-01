@@ -77,6 +77,9 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFTextBoxAutoComplete, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WPFTextBoxAutoComplete.1.0.5\lib\net40\WPFTextBoxAutoComplete.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -85,6 +88,10 @@
     </ApplicationDefinition>
     <Compile Include="DisplayModel\ConnectionEntry.cs" />
     <Compile Include="DisplayModel\StationBoardEntry.cs" />
+    <Compile Include="Helper\FavoritHelper.cs" />
+    <Compile Include="TextBoxAutoComplete.xaml.cs">
+      <DependentUpon>TextBoxAutoComplete.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -93,14 +100,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Geolocation\GeoLocationHandler.cs" />
     <Compile Include="Geolocation\GeoLocationHelper.cs" />
     <Compile Include="Geolocation\IGeoLocationUpdateEvent.cs" />
-    <Compile Include="GoogleMapsHelper.cs" />
+    <Compile Include="Helper\GoogleMapsHelper.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="MapWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TextBoxAutoComplete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -147,6 +159,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="logo_transparent.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="map.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="mail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="starOff.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="starOn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

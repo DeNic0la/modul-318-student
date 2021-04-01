@@ -2,7 +2,6 @@
 {
     using System;
     using System.Net;
-    using System.Threading.Tasks;
 
     public class HttpClient : IHttpClient
     {
@@ -11,10 +10,10 @@
         public HttpClient(ICredentials credentials, IWebProxy proxy)
         {
             this.client = new WebClient
-                              {
-                                  Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials)),
-                                  Proxy = proxy ?? throw new ArgumentNullException(nameof(proxy))
-                              };
+            {
+                Credentials = credentials ?? throw new ArgumentNullException(nameof(credentials)),
+                Proxy = proxy ?? throw new ArgumentNullException(nameof(proxy))
+            };
         }
 
         public void Dispose()

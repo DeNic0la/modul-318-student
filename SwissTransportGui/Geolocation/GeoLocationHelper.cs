@@ -9,10 +9,14 @@ namespace SwissTransportGUI
     {
         private GeoCoordinateWatcher geoWatcher;
         private GeoCoordinate coordinate = null;
+        /// <summary>
+        /// Liste, in welche alle EventHandler eingetragen werden können
+        /// </summary>
+        public List<IGeoLocationUpdateEvent> updateEventHandler { get; set; }
 
         public GeoLocationHelper()
         {
-            UpdateEventHandler = new List<IGeoLocationUpdateEvent>();
+            updateEventHandler = new List<IGeoLocationUpdateEvent>();
             geoWatcher = new GeoCoordinateWatcher();
             geoWatcher.MovementThreshold = 20;
             geoWatcher.StatusChanged += OnStatusChange;
@@ -27,10 +31,6 @@ namespace SwissTransportGUI
             get { return coordinate; }
         }
 
-        /// <summary>
-        /// Liste, in welche alle EventHandler eingetragen werden können
-        /// </summary>
-        public List<IGeoLocationUpdateEvent> UpdateEventHandler { get; set; }
 
         private void OnStatusChange(object sender, GeoPositionStatusChangedEventArgs e)
         {
@@ -56,10 +56,17 @@ namespace SwissTransportGUI
 
         private void CallUpdateEvent()
         {
-            foreach (IGeoLocationUpdateEvent updateEvent in UpdateEventHandler)
+            try
             {
-                updateEvent.OnGeoLocationUpdate(GeoCoordinate.Latitude.ToString(GoogleMapsHelper.numberFormatInfo), GeoCoordinate.Longitude.ToString(GoogleMapsHelper.numberFormatInfo));
+                foreach (IGeoLocationUpdateEvent updateEvent in updateEventHandler)
+                {
+                    updateEvent.OnGeoLocationUpdate(GeoCoordinate.Latitude.ToString(GoogleMapsHelper.numberFormatInfo), GeoCoordinate.Longitude.ToString(GoogleMapsHelper.numberFormatInfo));
+                }
             }
+            catch (Exception) { }/*this Function is called from the GeoWatcher
+                                  * because of this this Function can sometimes throw errors
+                                  * when removing EventHandlers */
+
         }
     }
 }

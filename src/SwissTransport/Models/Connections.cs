@@ -1,9 +1,8 @@
 namespace SwissTransport.Models
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
-    using Newtonsoft.Json;
 
     public class Connections
     {
@@ -21,19 +20,19 @@ namespace SwissTransport.Models
 
         public List<string> Line
         {
-            get 
+            get
             {
                 List<string> toReturn = new List<string>();
-                foreach(Section s in SectionList)
+                foreach (Section s in SectionList)
                 {
-                    toReturn.Add((s.journey?.Category ?? "")+(s.journey?.Number ?? ""));
+                    toReturn.Add((s.journey?.Category ?? "") + (s.journey?.Number ?? ""));
                 }
                 return toReturn;
             }
         }
-        
 
-        
+
+
     }
     public class Section
     {

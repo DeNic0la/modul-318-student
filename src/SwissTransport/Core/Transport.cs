@@ -1,11 +1,10 @@
 ﻿namespace SwissTransport.Core
 {
+    using Newtonsoft.Json;
+    using SwissTransport.Models;
     using System;
     using System.Net;
     using System.Text.RegularExpressions;
-    using Newtonsoft.Json;
-
-    using SwissTransport.Models;
 
     public class Transport : ITransport, IDisposable
     {
@@ -24,16 +23,16 @@
             }
 
             var uri = new Uri($"{WebApiHost}locations?query={query}&type=station");
-            return HttpClient.GetObject(uri, 
-                input => JsonConvert.DeserializeObject<Stations>(input, 
-                new JsonSerializerSettings 
+            return HttpClient.GetObject(uri,
+                input => JsonConvert.DeserializeObject<Stations>(input,
+                new JsonSerializerSettings
                 {
-                    NullValueHandling = NullValueHandling.Ignore 
-                }));       
+                    NullValueHandling = NullValueHandling.Ignore
+                }));
         }
         public Stations GetStationsByLocation(string Latitude, string Longitude)
         {
-            
+
 
             var uri = new Uri($"{WebApiHost}locations?x={Latitude}&y={Longitude}&type=station");
             return HttpClient.GetObject(uri,
@@ -64,14 +63,14 @@
                 {
                     NullValueHandling = NullValueHandling.Ignore
                 }));
-            
+
         }
         // For the Interface and Tests
-        public Connections GetConnections(string fromStation,string toStation)
+        public Connections GetConnections(string fromStation, string toStation)
         {
             return GetConnectionsWithTime(fromStation, toStation);
         }
-        
+
         public Connections GetConnectionsWithTime(string fromStation, string toStation, DateTime? departureDate = null, string departureTime = null)
         {
             string uriString = $"{WebApiHost}connections?from={fromStation}&to={toStation}";
@@ -89,7 +88,7 @@
                     uriString += "&date=" + (departureDate ?? DateTime.Now).ToString("yyyy-MM-dd");
                 }
                 catch (Exception) { }
-                
+
             }
             if (string.IsNullOrEmpty(fromStation))
             {

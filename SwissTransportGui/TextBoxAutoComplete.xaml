@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="SwissTransportGui.TextBoxAutoComplete"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:SwissTransportGui"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*" MaxWidth="400"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10*" MaxHeight="30"/>
+            <RowDefinition Height="30*"/>
+        </Grid.RowDefinitions>
+        <TextBox x:Name="textBoxInput" Margin="0" FontSize="18" Grid.ColumnSpan="2" PreviewTextInput="textBoxInput_PreviewTextInput" LostFocus="textBoxInput_LostFocus" GotFocus="textBoxInput_GotFocus" PreviewKeyDown="textBoxInput_PreviewKeyDown"/>
+        <ListBox x:Name="listBoxItemDisplay" Margin="0" Height="0" Grid.Row="1" VerticalAlignment="Top" Panel.ZIndex="3"/>
+        <StackPanel Margin="0" Grid.ColumnSpan="2" MaxHeight="50" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+            <Button x:Name="buttonShowStationOnMap" MaxWidth="50" MinWidth="20" HorizontalAlignment="Right" BorderBrush="#00707070" Foreground="Black" Background="#00DDDDDD" Click="buttonShowStationOnMap_Click">
+                <Image x:Name="mapIcon" Margin="0" MinWidth="20" MinHeight="20" Source="map.png"/>
+            </Button>
+            <Button x:Name="butttonAddStationToFavorits" MaxWidth="50" MinWidth="20" HorizontalAlignment="Right" BorderBrush="#00707070" Foreground="Black" Background="#00DDDDDD" Click="butttonAddStationToFavorits_Click">
+                <Image x:Name="starIcon" Margin="0" MinWidth="20" MinHeight="20" Source="starOff.png"/>                
+            </Button>
+        </StackPanel>
+        
+
+
+
+
+    </Grid>
+</UserControl>

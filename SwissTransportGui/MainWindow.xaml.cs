@@ -1,26 +1,14 @@
 ﻿using SwissTransport.Core;
+using SwissTransport.Models;
+using SwissTransportGui.Geolocation;
+using SwissTransportGUI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Device.Location;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Threading;
-using SwissTransport;
-using SwissTransport.Models;
-using SwissTransportView.Mock;
-using System.Text.RegularExpressions;
-using System.Device.Location;
-using SwissTransportGUI;
 
 namespace SwissTransportGui
 {
@@ -29,9 +17,10 @@ namespace SwissTransportGui
     /// </summary>
     public partial class MainWindow : Window
     {
-        //Thread currentStartStationSearchThread = new Thread(x => Console.WriteLine("ThreadStarted") );
         Transport transport = new Transport();
-        MapWindow mapWindow;
+        private GeoLocationHandler geoLocationHandler = new GeoLocationHandler();
+
+
 
         public List<StationBoardEntry> stationBoardEntryListToDisplay = new List<StationBoardEntry>();
         List<ConnectionEntry> connectionEntryListToDisplay = new List<ConnectionEntry>();
@@ -43,66 +32,54 @@ namespace SwissTransportGui
 
         public MainWindow()
         {
-            InitializeComponent();
-            //Initialize the Formater used for Map Data
             GoogleMapsHelper.numberFormatInfo.NumberDecimalSeparator = ".";
+            //PlayGround pg = new PlayGround();
+            //pg.Show();
+            InitializeComponent();
+            datePickerAbfahrtszeit.BlackoutDates.AddDatesInPast();
+
+
+            textBoxStartStation.TextBoxTabIndex = 0;
+            textBoxEndStation.TextBoxTabIndex = 1;
+
+            TextBoxAutoComplete.notifyOnStationUpdate notifyOnStationUpdate = updateTabControlls;
+
+            textBoxStartStation.addToNotifyOnStationUpdateList(notifyOnStationUpdate);
+            textBoxEndStation.addToNotifyOnStationUpdateList(notifyOnStationUpdate);
+
+
         }
 
-        private void textBoxStartStation_TextChanged(object sender, TextChangedEventArgs e)
+        private void updateTabControlls(bool atLeastOneFieldIs)
         {
-            updateTabControll();
-            /*currentStartStationSearchThread.Abort();
-            currentStartStationSearchThread = new Thread(updateTabControllStationButton);
-            currentStartStationSearchThread.Start();*/
-        }
-        private void textBoxEndStation_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            updateTabControll();
-            datePickerAbfahrtszeit.BlackoutDates.AddDatesInPast();
-        }
-        private void updateTabControll() {
-            if (tabItemStationBoardButton == null)
-                return;
-            //Check Start Station
-            if (isStationValid((textBoxStartStation.Text))) {
-                tabItemStationBoardButton.IsSelected = true;
-                if (isStationValid((textBoxEndStation.Text)) && textBoxEndStation.Text != textBoxStartStation.Text)
-                    tabItemSearchConnectionButton.IsSelected = true;
-                else
-                    tabItemSearchStationButton.IsSelected = true;
+            if (atLeastOneFieldIs)
+            {
+                if (textBoxStartStation.isValidStation)
+                {
+                    tabItemStationBoardButton.IsSelected = true;
+                    if (textBoxEndStation.isValidStation)
+                        tabItemSearchConnectionButton.IsSelected = true;
+                }
             }
-            else {
-                tabItemStationNearbyButton.IsSelected = true;
+            else
+            {
                 tabItemSearchStationButton.IsSelected = true;
+                if (!textBoxStartStation.isValidStation)
+                    tabItemStationNearbyButton.IsSelected = true;
             }
-            
         }
-        private bool isStationValid(string toSearchFor)
-        {
-            if (toSearchFor.Length < 1)
-                return false;
-            Stations foundStations = transport.GetStations(toSearchFor+",");//TODO: SWAP THIS MockData.GetStations();   //
-            foreach (Station s in foundStations.StationList)
-            {              
-                
-                if (s.Name != null 
-                    && (s.Name.Equals(toSearchFor, StringComparison.CurrentCultureIgnoreCase) 
-                    || s.Name.IndexOf((", "+toSearchFor), StringComparison.OrdinalIgnoreCase) >0 ))
-                    return true;
-            }            
-            return false;
-        }
+
 
         private void buttonSearchStation_Click(object sender, RoutedEventArgs e)
         {
-            Mouse.OverrideCursor = Cursors.Wait;            
-            Stations foundStations = transport.GetStations(textBoxStartStation.Text);   
-            
-            
+            Mouse.OverrideCursor = Cursors.Wait;
+            Stations foundStations = transport.GetStations(textBoxStartStation.Text);
+
+
             tabItemStationDisplayer.IsSelected = true;
 
             stackPanelStationDisplayer.Children.Clear();
-            foreach(Station s in foundStations.StationList)
+            foreach (Station s in foundStations.StationList)
             {
                 Button b = new Button();
                 stackPanelStationDisplayer.Children.Add(b);
@@ -128,7 +105,7 @@ namespace SwissTransportGui
                     textBoxStartStation.Text = ((Button)sender).Content.ToString();
                 }
                 catch (Exception) { }
-                
+
             }
 
             Mouse.OverrideCursor = null;
@@ -137,16 +114,15 @@ namespace SwissTransportGui
         private void buttonStationBoard_Click(object sender, RoutedEventArgs e)
         {
             Mouse.OverrideCursor = Cursors.Wait;
-            Stations foundStations = transport.GetStations(textBoxStartStation.Text);
-            Station s = foundStations.StationList.First();
-            StationBoardRoot sbr = transport.GetStationBoard(s.Name,s.Id);
+            Station s = textBoxStartStation.currentlySelectedStation;
+            StationBoardRoot sbr = transport.GetStationBoard(s.Name, s.Id);
             tabItemShowStationBoard.IsSelected = true;
             dataGridStationBoard.ItemsSource = null;
             stationBoardEntryListToDisplay.Clear();
-            
+
             foreach (StationBoard sb in sbr.Entries)
             {
-                StationBoardEntry stationBoardEntry = new StationBoardEntry( sb.Stop.Departure.ToString("HH:mm"), sb.Category+" "+sb.Number, sb.To);
+                StationBoardEntry stationBoardEntry = new StationBoardEntry(sb.Stop.Departure.ToString("HH:mm"), sb.Category + " " + sb.Number, sb.To);
                 stationBoardEntryListToDisplay.Add(stationBoardEntry);
             }
 
@@ -164,7 +140,10 @@ namespace SwissTransportGui
                 timeFromInput = textBoxAbfahrtszeit.Text;
                 dateTimeFromPicker = datePickerAbfahrtszeit.SelectedDate;
             }
-            Connections returnedConnections = transport.GetConnectionsWithTime(textBoxStartStation.Text, textBoxEndStation.Text,dateTimeFromPicker,timeFromInput);
+            Connections returnedConnections = transport.GetConnectionsWithTime(
+                textBoxStartStation.currentlySelectedStation.Name,
+                textBoxEndStation.currentlySelectedStation.Name,
+                dateTimeFromPicker, timeFromInput);
             dataGridConnections.ItemsSource = null;
             connectionEntryListToDisplay.Clear();
 
@@ -176,44 +155,29 @@ namespace SwissTransportGui
                         c.Duration,
                         c.From.Station.Name,
                         c.From.Platform,
-                        convertDateTimeToString(c.From.Departure,"dd.MM.yy HH:mm"),
+                        convertDateTimeToString(c.From.Departure, "dd.MM.yy HH:mm"),
                         c.To.Station.Name,
-                        convertDateTimeToString(c.To.Arrival,"HH:mm"),
+                        convertDateTimeToString(c.To.Arrival, "HH:mm"),
                         c.Line.First()));
-            }            
+            }
+
+            /*
+                DataGridTextColumn textColumn = new DataGridTextColumn(); 
+textColumn.Header = "First Name"; 
+textColumn.Binding = new Binding("FirstName"); 
+dataGrid.Columns.Add(textColumn);
+             */
 
             dataGridConnections.ItemsSource = connectionEntryListToDisplay;
             tabItemShowConnections.IsSelected = true;
 
             Mouse.OverrideCursor = null;
         }
-        private string convertDateTimeToString(DateTime? input,string format)
+        private string convertDateTimeToString(DateTime? input, string format)
         {
             if (input.HasValue)
                 return format == "" ? (input ?? DateTime.Now).ToString() : (input ?? DateTime.Now).ToString(format);
             return "";
-        }
-
-        private void textBoxStartStation_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if (isStationValid(textBoxStartStation.Text))
-                {
-                    buttonStationBoard_Click(sender, e);
-                }
-            }
-        }
-
-        private void textBoxEndStation_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Enter)
-            {
-                if (isStationValid(textBoxStartStation.Text) && isStationValid(textBoxEndStation.Text))
-                {
-                    buttonSearchConnection_Click(sender, e);
-                }
-            }
         }
 
         private void textBoxAbfahrtszeit_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -225,7 +189,7 @@ namespace SwissTransportGui
                 textBoxAbfahrtszeit.CaretIndex = 3;
             }
         }
-         
+
         private bool isTextIllegal(string text)
         {
             if (!numberRegex.IsMatch(text))
@@ -253,28 +217,65 @@ namespace SwissTransportGui
 
         private void textBoxAbfahrtszeit_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             if (e.Key == Key.Enter)
             {
                 textBoxAbfahrtszeit_LostFocus(sender, e);
-                if (isStationValid(textBoxStartStation.Text) && isStationValid(textBoxEndStation.Text))
+                if (textBoxStartStation.isValidStation && textBoxEndStation.isValidStation)
                 {
                     buttonSearchConnection_Click(sender, e);
                 }
             }
         }
-        
+
         private void buttonStationsNearby_Click(object sender, RoutedEventArgs e)
         {
-            GeoLocationHelper geoLocationHelper = new GeoLocationHelper();
-            GeoCoordinate geocoordinate = geoLocationHelper.GeoCoordinate;
-
-            if (geocoordinate != null)
+            if (this.geoLocationHandler.isLoading)
             {
-                GoogleMapsHelper.openLocation(geocoordinate.Altitude.ToString(GoogleMapsHelper.numberFormatInfo), geocoordinate.Latitude.ToString(GoogleMapsHelper.numberFormatInfo));
-                Stations nearestStations = transport.GetStationsByLocation(geocoordinate.Latitude.ToString(GoogleMapsHelper.numberFormatInfo), geocoordinate.Longitude.ToString(GoogleMapsHelper.numberFormatInfo));
-                mapWindow = new MapWindow(nearestStations.StationList);
-                mapWindow.Show();
+                MessageBox.Show("Ihr Standort wird bereits ermittelt, bitte warten sie einen Moment");
+                return;
+            }
+            else if (this.geoLocationHandler.mapWindow == null)
+            {
+                geoLocationHandler = new GeoLocationHandler(new GeoLocationHelper());
+            }
+            else
+            {
+                this.geoLocationHandler.mapWindow.Show();
+            }
+
+        }
+
+        private void btnSendMail_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                if (tabItemShowConnections.IsSelected && dataGridConnections.SelectedCells.Count > 0)
+                {
+                    foreach (DataGridCellInfo cellInfo in dataGridConnections.SelectedCells)
+                    {
+                        ConnectionEntry ce = ((ConnectionEntry)cellInfo.Item);
+                        System.Diagnostics.Process.Start(
+                                "mailto:mail@hier.eingeben" + "?subject=Verbindung nach "
+                                + ce.Abfahrtsort + "&body=Von: " + ce.Abfahrtsort
+                                + ", Nach: " + ce.Ankunftsort + ", Abfahrt: " + ce.Abfahrt
+                                + " Ankunft: " + ce.Ankunft + ", Gleis: " + ce.Gleis
+                            );
+                        return;
+                    }
+                }
+                else if (tabItemShowStationBoard.IsSelected && dataGridStationBoard.SelectedCells.Count > 0)
+                {
+
+                }
+                else
+                {
+                    throw new Exception();
+                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Für diese Funktion muss mindestens eine Verbindung oder Abfahrtstabelleneintrag markiert sein");
             }
 
         }

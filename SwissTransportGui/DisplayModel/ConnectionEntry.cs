@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SwissTransportGui
 {
     class ConnectionEntry
     {
-        
+
         public string Abfahrtsort { get; set; }
         public string Gleis { get; set; }
         public string Linie { get; set; }
@@ -31,6 +27,7 @@ namespace SwissTransportGui
             this.Ankunftsort = Ankunftsort;
             this.Ankunft = Ankunft;
             this.Linie = Linie;
-        }        
+
+        }
     }
 }
