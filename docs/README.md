@@ -6,7 +6,7 @@ description: Hier eine Übersicht der wichtigsten Teilen der Dokumentation
 
 ## Autor und Datum
 
-Version: 1.0
+Version: 1.1
 
 Autor: Nicola Fioretti
 
@@ -18,14 +18,18 @@ Datum: 01.04.21
 * [Inhaltsverzeichnis](./#inhaltsverzeichnis)
 * [User Storys](user-story.md)
 * [Mockup](mockup.md)
+* [Aktivitätsdiagramm](./#aktivitaetsdiagramm)
+* [Testfälle](testfaelle.md)
+* [Testprotokoll](testprotokoll.md)
+* [Guide](guide.md)
 
 ## Einleitung
 
-Das ist die Dokumentation für das Projekt im ÜK-318 von Nicola Fioretti. In dieser Dokumentation befindet sich eine kleine Anleitung zur verwendung der Applikation. Funktion der Applikation ist es verbindungen aus dem Schweizer ÖV-Netz abzufragen. Die Applikation wurde mit WPF in C\# geschrieben. Die Zielplattform dieser Applikation ist ein Computer mit Windows als Opertaing System.
+Das ist die Dokumentation für das Projekt im ÜK-318 von Nicola Fioretti. In dieser Dokumentation befindet sich eine kleine Anleitung zur Verwendung der Applikation. Funktion der Applikation ist es verbindungen aus dem Schweizer ÖV-Netz abzufragen. Die Applikation wurde mit WPF in C\# geschrieben. Die Zielplattform dieser Applikation ist ein Computer mit Windows als Opertaing System.
 
 ## Zweck
 
-In dieser Dokumentation sind die User-Storys, die Mockups und Andere Planungsdokumente vorhanden. In dieser Dokumentation sind auch Testfälle und Known-Issues abgedeckt.
+In dieser Dokumentation sind die User-Storys, die [Mockups ](mockup.md)und andere Planungsdokumente vorhanden. In dieser Dokumentation sind auch [Testfälle ](testfaelle.md)und [Known-Issues](./#known-issues) abgedeckt.
 
 ## Umsetzung der Funktionen
 
@@ -61,6 +65,10 @@ Umsetzung: Es werden die Station in der Nähe als Button angezeigt, durch Klicke
 
 Umsetzung: Die Favorit-Stationen welche den Text aus der Text-Box beinhalten werden vor den anderen Stationen angezeigt.
 
+### Umgesetzte AK's:
+
+Die Umgesetzten User-Storys bzw. AK's befinden sich bei den [User-Storys](user-story.md).
+
 ### Known-Issues
 
 #### Tab-Selection-Bug bei ListBox
@@ -75,11 +83,9 @@ Wenn bei einem Station-Textfeld eine Station durch das klicken auf ein Element a
 
 Aktivitätsdiagramm zu [User-Story](user-story.md#abfahrtstafel) 
 
-![Aktivit&#xE4;tsdiagramm Abfahrtstafel](.gitbook/assets/aktivitaetsdiagramm%20%281%29.png)
+![Aktivit&#xE4;tsdiagramm Abfahrtstafel](.gitbook/assets/aktivitaetsdiagramm.png)
 
 Als erstes wird der im Eingabefeld eingegebene Text validiert, wenn dieser eine Station ist wird ein API-Request gemacht und das Resultat angezeigt. Ansonsten wird ein Fehler angezeigt.
-
-
 
 |  |
 | :--- |
