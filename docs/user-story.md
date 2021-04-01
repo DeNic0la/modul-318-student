@@ -22,9 +22,10 @@ Stationen zu sehen und diese dann für die Suche von Verbindungen zu verwenden.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Durch die eingabe kann eine Station eingegeben werden und nach dieser Station gesucht werden. |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | Durch die eingabe kann eine Station eingegeben werden und nach dieser Station gesucht werden. | \[./\] |
+|  |  | \[X\] |
 
 ## Verbindung suchen
 
