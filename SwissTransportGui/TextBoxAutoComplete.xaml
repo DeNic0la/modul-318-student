@@ -15,7 +15,7 @@
             <RowDefinition Height="30*"/>
         </Grid.RowDefinitions>
         <TextBox x:Name="textBoxInput" Margin="0" FontSize="18" Grid.ColumnSpan="2" PreviewTextInput="textBoxInput_PreviewTextInput" LostFocus="textBoxInput_LostFocus" GotFocus="textBoxInput_GotFocus" PreviewKeyDown="textBoxInput_PreviewKeyDown"/>
-        <ListBox x:Name="listBoxItemDisplay" Margin="0" Height="0" Grid.Row="1" VerticalAlignment="Top" Panel.ZIndex="3"/>
+        <ListBox x:Name="listBoxItemDisplay" Margin="0" Height="0" Grid.Row="1" VerticalAlignment="Top" Panel.ZIndex="3" PreviewMouseLeftButtonDown="listBoxItemDisplay_PreviewMouseLeftButtonDown"/>
         <StackPanel Margin="0" Grid.ColumnSpan="2" MaxHeight="50" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
             <Button x:Name="buttonShowStationOnMap" MaxWidth="50" MinWidth="20" HorizontalAlignment="Right" BorderBrush="#00707070" Foreground="Black" Background="#00DDDDDD" Click="buttonShowStationOnMap_Click">
                 <Image x:Name="mapIcon" Margin="0" MinWidth="20" MinHeight="20" Source="map.png"/>

@@ -2,6 +2,7 @@
 using SwissTransport.Models;
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -16,6 +17,7 @@ namespace SwissTransportGui
     {
         Transport transport = new Transport();
         private int notUpdatedFor = 0;
+        private Regex regexAllowedChars = new Regex("^(?:[A-Za-zäöüÖÄÜ]+)(?:[A-Za-z0-9äöüÖÄÜ _]*)$");
         public int TextBoxTabIndex
         {
             set
@@ -104,7 +106,7 @@ namespace SwissTransportGui
         }
         private bool containsIllegalChar(string toTest)
         {
-            return false; //TODO
+            return !regexAllowedChars.IsMatch(toTest);
         }
         private void textBoxInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
@@ -262,6 +264,16 @@ namespace SwissTransportGui
                     Favorit.FavoritHelper.Favorits.Add(currentlySelectedStation.Name);
                     starIcon.Source = new BitmapImage(new Uri(@"/starOn.png", UriKind.Relative));
                 }
+            }
+        }
+
+        private void listBoxItemDisplay_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            var item = ItemsControl.ContainerFromElement(sender as ListBox, e.OriginalSource as DependencyObject) as ListBoxItem;
+            if (item != null)
+            {
+                textBoxInput.Text = item.DataContext.ToString();
+                textBoxInput_LostFocus(this, e);
             }
         }
     }
