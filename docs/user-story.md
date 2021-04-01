@@ -24,8 +24,7 @@ Stationen zu sehen und diese dann für die Suche von Verbindungen zu verwenden.
 
 | AK | Beschreibung | Done |
 | :--- | :--- | :--- |
-| AK-1 | Durch die eingabe kann eine Station eingegeben werden und nach dieser Station gesucht werden. | \[./\] |
-|  |  | \[X\] |
+| AK-1 | Durch die eingabe kann eine Station eingegeben werden und nach dieser Station gesucht werden. | ✔ |
 
 ## Verbindung suchen
 
@@ -39,11 +38,11 @@ die Verbindungen zu sehen.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Der Benutzer kann eine Start und Zielstation durch die Eingabe in ein Textfenster festlegen. |
-| AK-2 | Der Benutzer kann durch das betätigen eines "Search-Buttons" eine Anzeige aufrufen welche die Verbindungen zwischen der Start und Zielstation anzeigt |
-| AK-3 | Die Anzeige mit den Verbindungen zwischen den beiden Stationen zeigt mindestens die Nächsten 4 Verbindungen an |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | Der Benutzer kann eine Start und Zielstation durch die Eingabe in ein Textfenster festlegen. | ✔ |
+| AK-2 | Der Benutzer kann durch das betätigen eines "Search-Buttons" eine Anzeige aufrufen welche die Verbindungen zwischen der Start und Zielstation anzeigt | ✔ |
+| AK-3 | Die Anzeige mit den Verbindungen zwischen den beiden Stationen zeigt mindestens die Nächsten 4 Verbindungen an | ✔ |
 
 ### Priorität
 
@@ -61,10 +60,10 @@ die Verbindungen zu sehen.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Der Benutzer kann eine Station durch die Eingabe in ein Textfenster festlegen. |
-| AK-2 | Der Benutzer kann durch das betätigen eines "Search-Buttons" eine Anzeige aufrufen welche die Abfahrtsverbindungen anzeigt welche von dieser Station weg gehen. |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | Der Benutzer kann eine Station durch die Eingabe in ein Textfenster festlegen. | ✔ |
+| AK-2 | Der Benutzer kann durch das betätigen eines "Search-Buttons" eine Anzeige aufrufen welche die Abfahrtsverbindungen anzeigt welche von dieser Station weg gehen. | ✔ |
 
 ## Geplante Abfahrt
 
@@ -78,11 +77,11 @@ Verbindungen aus der Zukunft anzuzeigen.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Bei der Eingabe der Start und Zielstation soll als Optionale eingabe eine Uhrzeit und Tag eingegeben werden können |
-| AK-2 | Standartgemäss wird die Uhrzeit und Tag eingabe auf den Aktuellen Zeitpunkt gesetzt. |
-| AK-3 | Die Uhrzeit und der Tag wird für das [suchen der Verbindungen](user-story.md#verbindung-suchen) verwendet, es werden verbindungen zu dieser Uhrzeit angezeigt. |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | Bei der Eingabe der Start und Zielstation soll als Optionale eingabe eine Uhrzeit und Tag eingegeben werden können | ✔ |
+| AK-2 | Standartgemäss wird die Uhrzeit und Tag eingabe auf den Aktuellen Zeitpunkt gesetzt. | ✔ |
+| AK-3 | Die Uhrzeit und der Tag wird für das [suchen der Verbindungen](user-story.md#verbindung-suchen) verwendet, es werden verbindungen zu dieser Uhrzeit angezeigt. | ✔ |
 
 ## Abfahrtsinformationen per Mail teilen
 
@@ -96,9 +95,9 @@ anderen Personen diese Informationen mitzuteilen.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Beim Klicken auf einen Knopf in der Detail ansicht wird ein Mail-Fenster geöffnet welches die Informationen der Verbindung beeinhaltet. |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | Beim Klicken auf einen Knopf in der Detail ansicht wird ein Mail-Fenster geöffnet welches die Informationen der Verbindung beeinhaltet. | ✔ |
 
 ## Auto-Completion
 
@@ -112,9 +111,9 @@ schneller Verbindungen zu suchen.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | die Benutzer-Texteingaben haben eine Autocompletion durch die Möglichen Stationsnahmen. |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | die Benutzer-Texteingaben haben eine Autocompletion durch die Möglichen Stationsnahmen. | - |
 
 ## Karte
 
@@ -128,11 +127,11 @@ den Standort der Station nachzuvollziehen.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Eine Station kann auf der Karte angezeigt werden |
-| AK-2 | Die Umliegenden Stationen werden auf der Karte mitangezeigt |
-| AK-3 | Auf der Karte kann der Aktuelle standort angezeigt werden ohne ausgewählte Station |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | Eine Station kann auf der Karte angezeigt werden | ✔ |
+| AK-2 | Die Umliegenden Stationen werden auf der Karte mitangezeigt | - |
+| AK-3 | Auf der Karte kann der Aktuelle standort angezeigt werden ohne ausgewählte Station | - |
 
 ## Stationen in der Nähe
 
@@ -146,10 +145,10 @@ meine reise besser zu planen.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Stationen in der Nähe werden angezeigt. |
-| AK-2 | Stationen in der Nähe können auf einer Karte Angezeigt werden |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | Stationen in der Nähe werden angezeigt. | ✔ |
+| AK-2 | Stationen in der Nähe können auf einer Karte Angezeigt werden | ✔ |
 
 ## Favorit-Station
 
@@ -163,11 +162,11 @@ diese Station bei der Suche mit höherer Priorität zu finden.
 
 ### AK
 
-| AK | Beschreibung |
-| :--- | :--- |
-| AK-1 | Eine Station kann als Favorit markiert werden |
-| AK-2 | Favorit-Stationen werden in der [Autocompletion ](user-story.md#auto-completion)mit höherer priorität angezeigt. |
-| AK-3 | Favorit-Stationen können bereits vor der eingabe von Text ausgewählt werden |
+| AK | Beschreibung | Done |
+| :--- | :--- | :--- |
+| AK-1 | Eine Station kann als Favorit markiert werden | ✔ |
+| AK-2 | Favorit-Stationen werden in der [Autocompletion ](user-story.md#auto-completion)mit höherer priorität angezeigt. | ✔ |
+| AK-3 | Favorit-Stationen können bereits vor der eingabe von Text ausgewählt werden | - |
 
 ## Prioritätenliste
 
