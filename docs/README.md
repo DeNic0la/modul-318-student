@@ -18,6 +18,10 @@ Datum: 01.04.21
 * [Inhaltsverzeichnis](./#inhaltsverzeichnis)
 * [User Storys](user-story.md)
 * [Mockup](mockup.md)
+* [Aktivitätsdiagramm](./#aktivitaetsdiagramm)
+* [Testfälle](testfaelle.md)
+* [Testprotokoll](testprotokoll.md)
+* [Guide](guide.md)
 
 ## Einleitung
 
@@ -75,7 +79,7 @@ Wenn bei einem Station-Textfeld eine Station durch das klicken auf ein Element a
 
 Aktivitätsdiagramm zu [User-Story](user-story.md#abfahrtstafel) 
 
-![Aktivit&#xE4;tsdiagramm Abfahrtstafel](.gitbook/assets/aktivitaetsdiagramm%20%281%29.png)
+![Aktivit&#xE4;tsdiagramm Abfahrtstafel](.gitbook/assets/aktivitaetsdiagramm.png)
 
 Als erstes wird der im Eingabefeld eingegebene Text validiert, wenn dieser eine Station ist wird ein API-Request gemacht und das Resultat angezeigt. Ansonsten wird ein Fehler angezeigt.
 

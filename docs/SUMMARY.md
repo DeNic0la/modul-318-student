@@ -5,4 +5,5 @@
 * [Mockup](mockup.md)
 * [Testfälle](testfaelle.md)
 * [Testprotokoll](testprotokoll.md)
+* [Guide](guide.md)
 
