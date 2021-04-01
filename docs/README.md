@@ -65,6 +65,10 @@ Umsetzung: Es werden die Station in der Nähe als Button angezeigt, durch Klicke
 
 Umsetzung: Die Favorit-Stationen welche den Text aus der Text-Box beinhalten werden vor den anderen Stationen angezeigt.
 
+### Umgesetzte AK's:
+
+Die Umgesetzten User-Storys bzw. AK's befinden sich bei den [User-Storys](user-story.md).
+
 ### Known-Issues
 
 #### Tab-Selection-Bug bei ListBox
