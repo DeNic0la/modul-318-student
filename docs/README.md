@@ -63,15 +63,21 @@ Umsetzung: Die Favorit-Stationen welche den Text aus der Text-Box beinhalten wer
 
 ### Known-Issues
 
+#### Tab-Selection-Bug bei ListBox
+
+Wenn bei einem Station-Textfeld eine Station durch das klicken auf ein Element aus der ListBox ausgewählt wird, bleibt dieses Element ausgewählt auch wenn es ausgeblendet wird. Mit der Tab-Taste wird dann zuerst durch die verbleibenden Elemente der ListBox iteriert.
+
 
 
 ## [Mockups](mockup.md)
 
 ## Aktivitätsdiagramm
 
-Fill Here
+Aktivitätsdiagramm zu [User-Story](user-story.md#abfahrtstafel) 
 
+![Aktivit&#xE4;tsdiagramm Abfahrtstafel](.gitbook/assets/aktivitaetsdiagramm%20%281%29.png)
 
+Als erstes wird der im Eingabefeld eingegebene Text validiert, wenn dieser eine Station ist wird ein API-Request gemacht und das Resultat angezeigt. Ansonsten wird ein Fehler angezeigt.
 
 
 
