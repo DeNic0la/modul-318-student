@@ -104,7 +104,7 @@ namespace SwissTransportGui
         }
         private bool containsIllegalChar(string toTest)
         {
-            return false;
+            return false; //TODO
         }
         private void textBoxInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
