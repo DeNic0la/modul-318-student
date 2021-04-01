@@ -6,6 +6,18 @@ description: Die Testfälle für die Applikation
 
 ## Testplan
 
+Tester:
+
+Datum:
+
+Dokumentversion: 1.0
+
+App-Version:
+
+Installations anleitung in eigenem Kapitel zu finden
+
+
+
 ### Abfahrtstafel anzeigen
 
 Requirements: Programm gestartet, Aktive Internetverbindung.
