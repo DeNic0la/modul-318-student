@@ -38,6 +38,14 @@ Für die Deinstalltion wird ebenfalls das Setup benötigt. Im ersten Schritt das
 
 Im Setup-Assistent auswählen das die Applikation entfernt werden soll. Anschliessend dem Setup folgen.
 
+### Verwendung der Applikation
+
+Die Applikation kann Jederzeit über den Desktop-Shortcut gestartet werden. Für das Feature "Stationen in der Nähe Anzeigen" muss die Standortfreigabe Aktiviert sein.
+
+### Rechtliches
+
+Diese Applikation wurde zu Ausbildungszwecken im ÜK-318 erstellt.
+
 
 
 
