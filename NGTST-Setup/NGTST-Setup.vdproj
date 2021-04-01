@@ -15,44 +15,50 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_28825A89FF8AD6CEC0C6235C609944B0"
-        "OwnerKey" = "8:_3B43192B38DF4277B6D29BBEEA6574FE"
+        "MsmKey" = "8:_1BA92EC67E6898289A5B4AEBCEE56208"
+        "OwnerKey" = "8:_4E1F52E8581B4E61A5C6A7B2C955E056"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_3B43192B38DF4277B6D29BBEEA6574FE"
+        "MsmKey" = "8:_4E1F52E8581B4E61A5C6A7B2C955E056"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_79115A5B81B6D709DB30B1EDDFAD4EB8"
-        "OwnerKey" = "8:_3B43192B38DF4277B6D29BBEEA6574FE"
+        "OwnerKey" = "8:_9F2CD86DEBB8503DF6674131E8BE1037"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_E4C3C9E5A86535985A4AF92E415C578A"
-        "OwnerKey" = "8:_3B43192B38DF4277B6D29BBEEA6574FE"
+        "MsmKey" = "8:_79115A5B81B6D709DB30B1EDDFAD4EB8"
+        "OwnerKey" = "8:_4E1F52E8581B4E61A5C6A7B2C955E056"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E4C3C9E5A86535985A4AF92E415C578A"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3B43192B38DF4277B6D29BBEEA6574FE"
+        "MsmKey" = "8:_9F2CD86DEBB8503DF6674131E8BE1037"
+        "OwnerKey" = "8:_4E1F52E8581B4E61A5C6A7B2C955E056"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_28825A89FF8AD6CEC0C6235C609944B0"
+        "OwnerKey" = "8:_4E1F52E8581B4E61A5C6A7B2C955E056"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9F2CD86DEBB8503DF6674131E8BE1037"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1BA92EC67E6898289A5B4AEBCEE56208"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -79,6 +85,14 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
         }
         "Release"
         {
@@ -95,6 +109,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -124,20 +154,20 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_28825A89FF8AD6CEC0C6235C609944B0"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1BA92EC67E6898289A5B4AEBCEE56208"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:WPFTextBoxAutoComplete, Version=1.0.0.2, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
                 "ScatterAssemblies"
                 {
-                    "_28825A89FF8AD6CEC0C6235C609944B0"
+                    "_1BA92EC67E6898289A5B4AEBCEE56208"
                     {
-                    "Name" = "8:WPFTextBoxAutoComplete.dll"
+                    "Name" = "8:System.Net.Http.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:WPFTextBoxAutoComplete.dll"
+            "SourcePath" = "8:System.Net.Http.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_889E2A8A382643EE8C0117DC025913FE"
@@ -186,20 +216,20 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_E4C3C9E5A86535985A4AF92E415C578A"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9F2CD86DEBB8503DF6674131E8BE1037"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.Net.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"
+            "AssemblyAsmDisplayName" = "8:SwissTransport, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_E4C3C9E5A86535985A4AF92E415C578A"
+                    "_9F2CD86DEBB8503DF6674131E8BE1037"
                     {
-                    "Name" = "8:System.Net.Http.dll"
+                    "Name" = "8:SwissTransport.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.Net.Http.dll"
+            "SourcePath" = "8:SwissTransport.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_889E2A8A382643EE8C0117DC025913FE"
@@ -274,20 +304,20 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:NGTST-Setup"
         "ProductCode" = "8:{A10E0B34-83B2-439B-A3DB-61FB84C7E65D}"
-        "PackageCode" = "8:{93A30ECE-5BE9-4FE5-AD67-F1834DFA0631}"
+        "PackageCode" = "8:{616BC9B3-B91F-4F9F-AFF1-D5109C59DCF2}"
         "UpgradeCode" = "8:{F6BB9F13-8B30-42FA-B525-45F575EA768D}"
         "AspNetVersion" = "8:"
         "RestartWWWService" = "11:FALSE"
-        "RemovePreviousVersions" = "11:FALSE"
+        "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:Default Company Name"
+        "Manufacturer" = "8:NicolaAG"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:NGTST-Setup"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Default Company Name"
+        "ARPCONTACT" = "8:NiolaAG"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -394,7 +424,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_509CF10E64CD4EA88096FCE4E36C732C"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_F10F7AD807594E21A1BE3E1C69C3803A"
             {
             "Name" = "8:NGTST"
             "Arguments" = "8:"
@@ -402,7 +432,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_3B43192B38DF4277B6D29BBEEA6574FE"
+            "Target" = "8:_4E1F52E8581B4E61A5C6A7B2C955E056"
             "Folder" = "8:_EC3062FBEE49408F8EBC471CE2CCD99A"
             "WorkingFolder" = "8:_889E2A8A382643EE8C0117DC025913FE"
             "Icon" = "8:"
@@ -807,9 +837,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_3B43192B38DF4277B6D29BBEEA6574FE"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4E1F52E8581B4E61A5C6A7B2C955E056"
             {
-            "SourcePath" = "8:"
+            "SourcePath" = "8:..\\SwissTransportGui\\obj\\Release\\SwissTransportGui.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_889E2A8A382643EE8C0117DC025913FE"
@@ -829,7 +859,7 @@
             "ProjectOutputGroupRegister" = "3:1"
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
-            "OutputProjectGuid" = "8:{D0262178-A48F-4DE0-807B-E76B63E39421}"
+            "OutputProjectGuid" = "8:{D168D8B9-E289-4DD1-BF52-508F9CDF43D6}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {
