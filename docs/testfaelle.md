@@ -73,10 +73,21 @@ Requirements: Programm gestartet, Aktive Internetverbindung.
 
 ### Stationen in der Nähe
 
-Requirements: Programm gestartet, Aktive Internetverbindung, 
+Requirements: Programm gestartet, Aktive Internetverbindung, Standortfreigabe ist Aktiv
 
 | Schritt | Aktivität | Erwartetes Resultat | Abweichendes Resultat | Erfüllt |
 | :--- | :--- | :--- | :--- | :--- |
-| 1 | In die Startstation-Textbox wird "Luz" eingegeben | Es öffnet sich eine ListBox welche "Luzern" aufgelistet hat |  |  |
-| 2 | In der ListBox wird "Luzern" durch die Pfeiltasten ausgewählt und mit "Enter" bestätigt | in der Startstation-Textbox steht nun Luzern |  |  |
+| 1 | Der Knopf "Stationen in der Nähe anzeigen" wird angeklickt | nach wartezeit wird ein Fenster mit den Stationen in der nähe angezeigt |  |  |
+| 2 | Eine der angezeigten Stationen wird angeklick | in einem Browser-Fenster öffnet sich Google-Maps mit dem Standort der angeklickten Station |  |  |
+
+### Favoriten
+
+Requirements: Programm gestartet, Aktive Internetverbindung, keine bereits ausgewählten Favoriten
+
+| Schritt | Aktivität | Erwartetes Resultat | Abweichendes Resultat | Erfüllt |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | Im Startstation-Textfeld wird nach Luzern gesucht und anschliessend ausgewählt | Der Text "Luzern" befindet sich im Startstation-Textfeld. Im Text-Feld befindet sich ein "Leerer Stern" |  |  |
+| 2 | Der leere Stern neben Luzern wird angeklickt | Der Stern wird ausgefüllt |  |  |
+| 3 | Der Text in Startstation wird gelöscht | Es befindet sich kein Text im Startstation-Feld |  |  |
+| 4 | In das Startstation-Textfeld wird "L" eingegeben | "Luzern" taucht als oberstes Resultat auf. |  |  |
 
