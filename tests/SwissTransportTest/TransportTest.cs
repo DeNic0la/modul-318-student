@@ -40,11 +40,11 @@
             Assert.IsNotNull(connections);
         }
 
-        
+
         [TestMethod]
         public void ConnectionsWithTime()
         {
-            testee = new Transport(); 
+            testee = new Transport();
             var connections = this.testee.GetConnections("Sursee", "Luzern", DateTime.Now, "12:00");
 
             Assert.IsNotNull(connections);

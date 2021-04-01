@@ -32,7 +32,8 @@ namespace SwissTransportGui
 
         public MainWindow()
         {
-            GoogleMapsHelper.numberFormatInfo.NumberDecimalSeparator = ".";
+
+            InternetHelper.numberFormatInfo.NumberDecimalSeparator = ".";
             InitializeComponent();
 
             datePickerAbfahrtszeit.BlackoutDates.AddDatesInPast();
@@ -51,6 +52,11 @@ namespace SwissTransportGui
 
         private void updateTabControlls(bool atLeastOneFieldIs)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             if (atLeastOneFieldIs)
             {
                 if (textBoxStartStation.isValidStation)
@@ -71,6 +77,11 @@ namespace SwissTransportGui
 
         private void buttonSearchStation_Click(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             Mouse.OverrideCursor = Cursors.Wait;
             Stations foundStations = transport.GetStations(textBoxStartStation.Text);
 
@@ -96,6 +107,11 @@ namespace SwissTransportGui
 
         private void buttonClickPutTextInStationField(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             Mouse.OverrideCursor = Cursors.Wait;
             if (sender is Button)
             {
@@ -112,6 +128,11 @@ namespace SwissTransportGui
 
         private void buttonStationBoard_Click(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             Mouse.OverrideCursor = Cursors.Wait;
             Station s = textBoxStartStation.currentlySelectedStation;
             StationBoardRoot sbr = transport.GetStationBoard(s.Name, s.Id);
@@ -131,6 +152,11 @@ namespace SwissTransportGui
 
         private void buttonSearchConnection_Click(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             Mouse.OverrideCursor = Cursors.Wait;
             DateTime? dateTimeFromPicker = null;
             string timeFromInput = "";
@@ -209,9 +235,13 @@ namespace SwissTransportGui
 
         private void textBoxAbfahrtszeit_KeyDown(object sender, KeyEventArgs e)
         {
-
             if (e.Key == Key.Enter)
             {
+                if (!InternetHelper.hasInternetConnection())
+                {
+                    MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                    return;
+                }
                 textBoxAbfahrtszeit_LostFocus(sender, e);
                 if (textBoxStartStation.isValidStation && textBoxEndStation.isValidStation)
                 {
@@ -222,6 +252,11 @@ namespace SwissTransportGui
 
         private void buttonStationsNearby_Click(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             if (this.geoLocationHandler.isLoading)
             {
                 MessageBox.Show("Ihr Standort wird bereits ermittelt, bitte warten sie einen Moment");
@@ -240,6 +275,11 @@ namespace SwissTransportGui
 
         private void btnSendMail_Click(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             try
             {
                 if (tabItemShowConnections.IsSelected && dataGridConnections.SelectedCells.Count > 0)

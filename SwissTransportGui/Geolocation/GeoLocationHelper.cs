@@ -60,7 +60,7 @@ namespace SwissTransportGUI
             {
                 foreach (IGeoLocationUpdateEvent updateEvent in updateEventHandler)
                 {
-                    updateEvent.OnGeoLocationUpdate(GeoCoordinate.Latitude.ToString(GoogleMapsHelper.numberFormatInfo), GeoCoordinate.Longitude.ToString(GoogleMapsHelper.numberFormatInfo));
+                    updateEvent.OnGeoLocationUpdate(GeoCoordinate.Latitude.ToString(InternetHelper.numberFormatInfo), GeoCoordinate.Longitude.ToString(InternetHelper.numberFormatInfo));
                 }
             }
             catch (Exception) { }/*this Function is called from the GeoWatcher

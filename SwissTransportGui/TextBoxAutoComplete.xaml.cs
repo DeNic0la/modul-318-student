@@ -110,6 +110,12 @@ namespace SwissTransportGui
         }
         private void textBoxInput_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                e.Handled = true;
+                return;
+            }
 
             if (containsIllegalChar(e.Text))
             {
@@ -162,6 +168,10 @@ namespace SwissTransportGui
 
         private void textBoxInput_LostFocus(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                return;
+            }
             listBoxItemDisplay.Height = 0;
             if (string.IsNullOrEmpty(textBoxInput.Text))
                 return;
@@ -190,6 +200,11 @@ namespace SwissTransportGui
 
         private void textBoxInput_GotFocus(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             isValidStation = false;
             List<string> newItems = new List<string>();
             foreach (string s in Favorit.FavoritHelper.Favorits)
@@ -202,6 +217,11 @@ namespace SwissTransportGui
 
         private void textBoxInput_PreviewKeyDown(object sender, KeyEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
 
             switch (e.Key)
             {
@@ -237,12 +257,17 @@ namespace SwissTransportGui
 
         private void buttonShowStationOnMap_Click(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             if (isValidStation)
             {
                 Coordinate c = currentlySelectedStation.Coordinate;
-                GoogleMapsHelper.openLocation(
-                    c.XCoordinate.ToString(GoogleMapsHelper.numberFormatInfo),
-                    c.YCoordinate.ToString(GoogleMapsHelper.numberFormatInfo));
+                InternetHelper.openLocation(
+                    c.XCoordinate.ToString(InternetHelper.numberFormatInfo),
+                    c.YCoordinate.ToString(InternetHelper.numberFormatInfo));
             }
             else
             {
@@ -252,6 +277,11 @@ namespace SwissTransportGui
 
         private void butttonAddStationToFavorits_Click(object sender, RoutedEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             if (isValidStation)
             {
                 if (Favorit.FavoritHelper.Favorits.Contains(currentlySelectedStation.Name))
@@ -269,6 +299,11 @@ namespace SwissTransportGui
 
         private void listBoxItemDisplay_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (!InternetHelper.hasInternetConnection())
+            {
+                MessageBox.Show("Es ist keine Internetverbindung vorhanden");
+                return;
+            }
             var item = ItemsControl.ContainerFromElement(sender as ListBox, e.OriginalSource as DependencyObject) as ListBoxItem;
             if (item != null)
             {

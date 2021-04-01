@@ -42,7 +42,7 @@ namespace SwissTransportGui
         {
 
             Station s = displayedStations.ElementAt(stackPanelButtons.Children.IndexOf((Button)sender));
-            GoogleMapsHelper.openLocation(s.Coordinate.XCoordinate.ToString(GoogleMapsHelper.numberFormatInfo), s.Coordinate.YCoordinate.ToString(GoogleMapsHelper.numberFormatInfo));
+            InternetHelper.openLocation(s.Coordinate.XCoordinate.ToString(InternetHelper.numberFormatInfo), s.Coordinate.YCoordinate.ToString(InternetHelper.numberFormatInfo));
         }
     }
 }

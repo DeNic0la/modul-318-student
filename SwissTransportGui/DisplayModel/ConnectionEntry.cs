@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace SwissTransportGui
+﻿namespace SwissTransportGui
 {
     class ConnectionEntry
     {

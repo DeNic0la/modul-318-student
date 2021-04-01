@@ -26,14 +26,14 @@ namespace SwissTransportGui
                 {
                     path = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
                 }
-                catch (Exception) { }                
+                catch (Exception) { }
             }
 
             try
             {
-                
+
                 List<string> favoritsFromFile = new List<string>();
-                FileStream filestream = new FileStream(path+"Favorits.txt", FileMode.Open);
+                FileStream filestream = new FileStream(path + "Favorits.txt", FileMode.Open);
                 using (TextReader tw = new StreamReader(filestream))
                 {
                     bool keepLoopActive = true;
@@ -56,10 +56,10 @@ namespace SwissTransportGui
         }
         private void Application_Exit(object sender, ExitEventArgs e)
         {
-            
+
 
             List<string> toSave = Favorit.FavoritHelper.Favorits;
-            FileStream filestream = new FileStream(path+"Favorits.txt", FileMode.Create);
+            FileStream filestream = new FileStream(path + "Favorits.txt", FileMode.Create);
             using (TextWriter tw = new StreamWriter(filestream))
             {
                 foreach (string s in toSave)

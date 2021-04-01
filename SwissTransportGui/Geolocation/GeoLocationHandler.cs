@@ -15,7 +15,7 @@ namespace SwissTransportGui.Geolocation
         private Transport transport = new Transport();
         private List<GeoLocationHelper> signedOn = new List<GeoLocationHelper>();
         private Thread currentCountdownUntilThrowingError;
-        
+
 
         public GeoLocationHandler()
         {
